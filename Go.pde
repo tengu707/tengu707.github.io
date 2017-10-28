@@ -5,7 +5,7 @@ for (var j = 0; j< boardArray.length; j++) {
     boardSize= boardSize * 10 + boardArray[j];
 }
 var gridNum = boardSize - 1;
-var gridSize = 300;
+var gridSize = 900;
 var gridX = 50;
 var gridY = 50;
 var turn = 1;
@@ -48,14 +48,14 @@ var x1 = 150;
 var x2 = 250;
 var y1 = 10;
 var y2 = 40;
-var x3 = 275;
-var x4 = 375;
+var x3 = 875;
+var x4 = 975;
 var y3 = y1;
 var y4 = y2;
-var x5 = 190;
+var x5 = 790;
 var x6 = x4;
-var y5 = 360;
-var y6 = 390;
+var y5 = 960;
+var y6 = 990;
 
 //for determining mouse position
 var mouseGridX = 0;
@@ -234,7 +234,7 @@ Player.prototype.remove = function (X, Y) {
             if (button === 1) {
                 this.x.splice(i,1);
                 this.y.splice(i,1);
-                playSound(getSound("rpg/step-heavy"));
+                //playSound(getSound("rpg/step-heavy"));
             }
             remove ++;
         }
@@ -287,7 +287,7 @@ Player.prototype.findGroups = function () {
 Player.prototype.addPeice = function(X, Y) {
     this.x.push(X);
     this.y.push(Y);
-    playSound(getSound("rpg/hit-clop"));
+    //playSound(getSound("rpg/hit-clop"));
     add = 1;
     turn0.record();
     start = 0;
@@ -563,7 +563,7 @@ var drawBoard = function() {
     if (button < 1) {
         text("UNDO", 290, 35);
     }
-    text("GROUPLINES", 200, 385);
+    text("GROUPLINES", 200, 985);
     if (button < 1) {
         text("SKIP",173,35);
     }
@@ -674,8 +674,8 @@ var drawBoard = function() {
         strokeWeight(1);
         rect (10, 360, 115, 30);
         fill(0);
-        text("SIZE: " + boardSize,20, 385);
-        text("GROUPLINES", 200, 385);
+        text("SIZE: " + boardSize,20, 985);
+        text("GROUPLINES", 200, 985);
         text("SKIP",173,35);
     }
 };
