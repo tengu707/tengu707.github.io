@@ -1,1 +1,1 @@
-document.getByElementId("canvas").style.background = 'white';
+document.getByElementId("canvas").style.background = "#FFFFFF";
