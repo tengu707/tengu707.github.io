@@ -89,10 +89,12 @@ function highlightSpaces() {
       if (highlight === 1) {
         hString = hString.substring(0,i) + "<span class='highlight1'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
         i += 32;
+        highlight = highlight * -1;
       }
       else {
         hString = hString.substring(0,i) + "<span class='highlight2'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
         i += 32;
+        highlight = highlight * -1;
       }
     }
   }
@@ -101,16 +103,23 @@ function highlightSpaces() {
 function highlightWords() {
   var hString = string;
   var highlight = 1;
+  var repeat = true;
   for (i = 0; i < hString.length; i++) {
     if (hString[i].match(/[a-z]/i)) {
       if (highlight === 1) {
         hString = hString.substring(0,i) + "<span class='highlight1'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
         i += 32;
+        repeat = true;
       }
       else {
         hString = hString.substring(0,i) + "<span class='highlight2'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
         i += 32;
+        repeat = true;
       }
+    }
+    else if (repeat) {
+      highlight = highlight * -1;
+      repeat = false;
     }
   }
   document.getElementById("paragraph").innerHTML = hString;
@@ -118,19 +127,23 @@ function highlightWords() {
 function highlightSentences() {
   var hString = string;
   var highlight = 1;
+  var repeat = true;
   for (i = 0; i < hString.length; i++) {
     if (hString[i] !== "!" && hString[i] !== "?" && hString[i] !== ".") {
       if (highlight === 1) {
         hString = hString.substring(0,i) + "<span class='highlight1'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
         i += 32;
+        repeat = true;
       }
       else {
         hString = hString.substring(0,i) + "<span class='highlight2'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
         i += 32;
+        repeat = true;
       }
     }
-    else {
+    else if (repeat) {
       highlight = highlight * -1;
+      repeat = false;
     }
   }
   document.getElementById("paragraph").innerHTML = hString;
@@ -143,10 +156,12 @@ function highlightPunctuation() {
       if (highlight === 1) {
         hString = hString.substring(0,i) + "<span class='highlight1'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
         i += 32;
+        highlight = highlight * -1;
       }
       else {
         hString = hString.substring(0,i) + "<span class='highlight2'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
         i += 32;
+        highlight = highlight * -1;
       }
     }
   }
