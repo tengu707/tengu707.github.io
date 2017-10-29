@@ -1,4 +1,4 @@
-var c = documentgetElementById("myCavas");
+var c = documentgetElementById("myCanvas");
 var ctx = c.getContext("2d");
 ctx.moveTo(0, 0);
 ctx.lineTo(200, 100);
