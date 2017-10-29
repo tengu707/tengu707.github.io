@@ -83,20 +83,34 @@ function statistics() {
 }
 function highlightSpaces() {
   var hString = string;
+  var highlight = 1;
   for (i = 0; i < hString.length; i++) {
     if (hString[i] === " ") {
-      hString = hString.substring(0,i) + "<span class='highlight1'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
-      i += 32;
+      if (highlight === 1) {
+        hString = hString.substring(0,i) + "<span class='highlight1'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
+        i += 32;
+      }
+      else {
+        hString = hString.substring(0,i) + "<span class='highlight2'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
+        i += 32;
+      }
     }
   }
   document.getElementById("paragraph").innerHTML = hString;
 }
 function highlightWords() {
   var hString = string;
+  var highlight = 1;
   for (i = 0; i < hString.length; i++) {
     if (hString[i].match(/[a-z]/i)) {
-      hString = hString.substring(0,i) + "<span class='highlight1'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
-      i += 32;
+      if (highlight === 1) {
+        hString = hString.substring(0,i) + "<span class='highlight1'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
+        i += 32;
+      }
+      else {
+        hString = hString.substring(0,i) + "<span class='highlight2'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
+        i += 32;
+      }
     }
   }
   document.getElementById("paragraph").innerHTML = hString;
@@ -123,10 +137,17 @@ function highlightSentences() {
 }
 function highlightPunctuation() {
   var hString = string;
+  var highlight = 1;
   for (i = 0; i < hString.length; i++) {
     if (hString[i].match(/[.|!|?]/)) {
-      hString = hString.substring(0,i) + "<span class='highlight1'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
-      i += 32;
+      if (highlight === 1) {
+        hString = hString.substring(0,i) + "<span class='highlight1'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
+        i += 32;
+      }
+      else {
+        hString = hString.substring(0,i) + "<span class='highlight2'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
+        i += 32;
+      }
     }
   }
   document.getElementById("paragraph").innerHTML = hString;
