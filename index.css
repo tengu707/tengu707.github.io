@@ -1,7 +1,9 @@
 canvas {
     border:5px solid #c0c0c0;
+    background-color: white;
 }
 html {
-    color: black;
+    background-color: black;
+    color: white;
     font-family: 'Contrail One', cursive;
 }
