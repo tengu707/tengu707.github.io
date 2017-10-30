@@ -1,3 +1,5 @@
+//v 2.0 (not debugged)
+
 //Drawing variables
 var c = document.getElementById("goboard");
 var ctx = c.getContext("2d");
