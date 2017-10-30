@@ -87,14 +87,6 @@ var x1 = 150;
 var x2 = 250;
 var y1 = 10;
 var y2 = 40;
-var x3 = 275;
-var x4 = 375;
-var y3 = y1;
-var y4 = y2;
-var x5 = 190;
-var x6 = x4;
-var y5 = 360;
-var y6 = 390;
 
 //for determining mouse position
 var mouseGridX = 0;
