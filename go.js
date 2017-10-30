@@ -66,7 +66,7 @@ var start = 1;
 var undos = 8;
 var minus = 3;
 var fill = "#000000";
-
+/*
 //group color scheme
 ctx.strokeStyle(7, 115, 18);
 var colors = [
@@ -451,6 +451,8 @@ Player.prototype.duplicate = function(X, Y) {
     storage = [];
 }
 
+*/
+
 //A function that draws the background
 function background() {
 	var num=0;
@@ -468,6 +470,8 @@ function background() {
   	ctx.fillStyle = grd;
   	ctx.fillRect(0,0,canvasSize,canvasSize);
 }
+
+/*
 
 //complex funtions that are heavily reliant on each other and previous functions
 
@@ -620,10 +624,13 @@ function showCoords(event) {
     drawBoard();
 }
 
+*/
+
 //A function that runs once on the webpage loading or restarting the game
 function start() {
     var canvasSize = parsedInt(document.getElementById("canvasSize"));
     var boardSize = parsedInt(document.getElementById("boardSize"));
+	/*
     turn = 1;
     start = 1;
     undos = 8;
@@ -640,9 +647,12 @@ function start() {
     white = new Player(255, 255, 255, 0, 0, 0);
     button = 0;
     drawBoard();
+    */
+	background();
       
 }
 
+/*
 //A function to skip turns
 function skip() {
     if (button === 0) {
@@ -675,3 +685,4 @@ function undo() {
 function groupLineToggle() {
     groupLines *= -1;
 }
+*/
