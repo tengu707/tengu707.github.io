@@ -1,4 +1,4 @@
-//v 2.0 (not debugged)
+//v 2.0
 
 //Drawing variables
 
@@ -248,7 +248,7 @@ Player.prototype.groupLine = function() {
 Player.prototype.drawPeice = function() {
     ctx.lineWidth = 0.75;
     fill = this.color1;
-    ctx.strokStyle = this.color2;
+    ctx.strokeStyle = this.color2;
     for (var i = 0; i<this.x.length; i++) {
         circle(gridX + gridSize/gridNum *this.x[i], gridY + gridSize/gridNum *this.y[i], gridSize/gridNum-minus);
     }
@@ -592,8 +592,8 @@ function drawBoard() {
 
 //Detects clicking and calls the appropriate function based on where is clicked
 function showCoords(event) {
-    var mouseX = event.clientX;
-    var mouseY = event.clientY;
+    var mouseX = event.clientX - document.getElementById("goboard").offsetLeft;
+    var mouseY = event.clientY - document.getElementById("goboard").offsetTop;
     mouseGridX = Math.round((mouseX-gridX)/gridSize*gridNum);
     mouseGridY = Math.round((mouseY-gridY)/gridSize*gridNum);
     black.remove(mouseGridX, mouseGridY);
@@ -669,6 +669,7 @@ function skip() {
     else {
         button++;
     }
+	drawBoard();
 }
 
 //A function to undo turns
@@ -678,10 +679,12 @@ function undo() {
         turn0.recall();
         turn *=-1;
         undos ++;
+	    drawBoard();
     }
 }
 
 //A function to toggle grouplines
 function groupLineToggle() {
     groupLines *= -1;
+	drawBoard();
 }
