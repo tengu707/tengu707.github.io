@@ -69,7 +69,7 @@ var minus = 3;
 var fill = "#000000";
 
 //group color scheme
-ctx.strokeStyle(7, 115, 18);
+ctx.strokeStyle = "#077312";
 var colors = [
     "#ff0000",
     "#ffaa00",
@@ -454,8 +454,6 @@ Player.prototype.duplicate = function(X, Y) {
 
 //A function that draws the background
 function background() {
-	var c = document.getElementById("goboard");
-	var ctx = c.getContext("2d");
 	var num=0;
   	// Create gradient
   	var grd = ctx.createLinearGradient(0,0,canvasSize,0);
@@ -528,7 +526,7 @@ function drawBoard() {
     ctx.lineWidth = 3;
 
     //create gridlines
-    ctx.strokeStyle("#000000");
+    ctx.strokeStyle = "#000000";
     for (var i = 0; i<=gridNum; i++) {
         line(gridX + gridSize/gridNum * i, gridY, gridX + gridSize/gridNum * i, gridY +gridSize);
         line(gridX, gridY + gridSize/gridNum * i, gridX + gridSize, gridY + gridSize/gridNum * i);
@@ -579,7 +577,7 @@ function drawBoard() {
     //Turn indicator
     ctx.font = "25px Ariel";
     ctx.lineWidth = 1;
-    ctx.fillStyle("#CFC07F");
+    ctx.fillStyle = "#CFC07F";
     ctx.fillRect(10, 10, 125, 30);
     ctx.rect(10, 10, 125, 30);
     ctx.stroke();
