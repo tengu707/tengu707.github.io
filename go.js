@@ -2,8 +2,10 @@
 
 //Drawing variables
 
-/*
+
 //basic functions
+var c = document.getElementById("goboard");
+var ctx = c.getContext("2d");
 
 //A function that draws lines
 function line(x1, y1, x2, y2) {
@@ -65,11 +67,11 @@ var storeX = 0;
 var storeY = 0;
 var store = 0;
 var storage = [];
-var start = 1;
+var turnStart = 1;
 var undos = 8;
 var minus = 3;
 var fill = "#000000";
-/*
+
 //group color scheme
 ctx.strokeStyle(7, 115, 18);
 var colors = [
@@ -133,8 +135,8 @@ var Player = function(color1, color2) {
     this.groupIndex = [];
 }
 
-var black = new Player(#000000, #ffffff);
-var white = new Player(#ffffff, #000000);
+var black = new Player("#000000", "#ffffff");
+var white = new Player("#ffffff", "#000000");
 
 //functions for board objects
 
@@ -319,7 +321,7 @@ Player.prototype.addPeice = function(X, Y) {
     //playSound(getSound("rpg/hit-clop"));
     add = 1;
     turn0.record();
-    start = 0;
+    turnStart = 0;
     if (undos > 0) {
         undos --;
     }
@@ -454,8 +456,6 @@ Player.prototype.duplicate = function(X, Y) {
     storage = [];
 }
 
-*/
-
 //A function that draws the background
 function background() {
 	var c = document.getElementById("goboard");
@@ -476,7 +476,6 @@ function background() {
   	ctx.fillRect(0,0,canvasSize,canvasSize);
 }
 
-/*
 
 //complex funtions that are heavily reliant on each other and previous functions
 
@@ -635,9 +634,8 @@ function showCoords(event) {
 function start() {
     var canvasSize = document.getElementById("canvasSize").value;
     var boardSize = document.getElementById("boardSize").value;
-	/*
     turn = 1;
-    start = 1;
+    turnStart = 1;
     undos = 8;
     turn0 = new Board();
     turn1 = new Board();
@@ -652,12 +650,9 @@ function start() {
     white = new Player(255, 255, 255, 0, 0, 0);
     button = 0;
     drawBoard();
-    */
-	background();
       
 }
 
-/*
 //A function to skip turns
 function skip() {
     if (button === 0) {
@@ -690,4 +685,3 @@ function undo() {
 function groupLineToggle() {
     groupLines *= -1;
 }
-*/
