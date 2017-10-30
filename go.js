@@ -9,8 +9,6 @@ var ctx = c.getContext("2d");
 
 //A function that draws lines
 function line(x1, y1, x2, y2) {
-    var c = document.getElementById("goboard");
-    var ctx = c.getContext("2d");
     ctx.beginPath();
     ctx.moveTo(x1, y1);
     ctx.lineTo(x2, y2);
@@ -19,8 +17,6 @@ function line(x1, y1, x2, y2) {
 
 //A function that draws circles
 function circle(centerX, centerY, radius) {
-    var c = document.getElementById("goboard");
-    var ctx = c.getContext("2d");
     ctx.beginPath();
     ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
     ctx.stroke();
