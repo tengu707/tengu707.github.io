@@ -1,3 +1,7 @@
+//Drawing variables
+var c = document.getElementById("goboard");
+var ctx = c.getContext("2d");
+
 //programming variables
 var canvasSize = document.getElementById("canvasSize").value;
 var boardSize = document.getElementById("boardSize").value;
@@ -33,8 +37,6 @@ var fill = "#000000";
 
 //Background creating function
 function background() {
-  var c = document.getElementById("goboard");
-  var ctx = c.getContext("2d");
   var num=0;
   // Create gradient
   var grd = ctx.createLinearGradient(0,0,canvasSize,0);
