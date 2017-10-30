@@ -653,6 +653,7 @@ function start() {
     white = new Player(255, 255, 255, 0, 0, 0);
     button = 0;
     drawBoard();
+	alert("Game Started");
       
 }
 
@@ -672,6 +673,7 @@ function skip() {
     else {
         button++;
     }
+	alert("Turn Skipped");
 }
 
 //A function to undo turns
@@ -682,9 +684,11 @@ function undo() {
         turn *=-1;
         undos ++;
     }
+	alert("Turn Undone");
 }
 
 //A function to toggle grouplines
 function groupLineToggle() {
     groupLines *= -1;
+	alert("Grouplines Toggled");
 }
