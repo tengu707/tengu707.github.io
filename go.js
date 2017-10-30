@@ -143,91 +143,93 @@ var white = new Player(#ffffff, #000000);
 //functions for board objects
 
 //records current move and pushes old moves down the turn objects
-Board.prototype.record = function(X, Y) {
-    for (var i = 0; i < turn8.x.length; i++) {
-        turn8.peice[i] = turn7.peice[i];
-    }
-    for (var i = 0; i < turn7.x.length; i++) {
-        turn7.peice[i] = turn6.peice[i];
-    }
-    for (var i = 0; i < turn6.x.length; i++) {
-        turn6.peice[i] = turn5.peice[i];
-    }
-    for (var i = 0; i < turn5.x.length; i++) {
-        turn5.peice[i] = turn4.peice[i];
-    }
-    for (var i = 0; i < turn4.x.length; i++) {
-        turn4.peice[i] = turn3.peice[i];
-    }
-    for (var i = 0; i < turn3.x.length; i++) {
-        turn3.peice[i] = turn2.peice[i];
-    }
-    for (var i = 0; i < turn2.x.length; i++) {
-        turn2.peice[i] = turn1.peice[i];
-    }
-    for (var i = 0; i < turn1.x.length; i++) {
-        turn1.peice[i] = turn0.peice[i];
-    }
-    turn0.peice.splice(0, turn0.peice.length);
-    for (var i = 0; i < turn0.x.length; i++) {
-        for (var j = 0; j < black.x.length; j++) {
-            if (turn0.x[i] === black.x[j] && turn0.y[i] === black.y[j]) {
-                turn0.peice[i] = 'b';
+Board.prototype = {
+    record:function(X, Y) {
+        for (var i = 0; i < turn8.x.length; i++) {
+            turn8.peice[i] = turn7.peice[i];
+        }
+        for (var i = 0; i < turn7.x.length; i++) {
+            turn7.peice[i] = turn6.peice[i];
+        }
+        for (var i = 0; i < turn6.x.length; i++) {
+            turn6.peice[i] = turn5.peice[i];
+        }
+        for (var i = 0; i < turn5.x.length; i++) {
+            turn5.peice[i] = turn4.peice[i];
+        }
+        for (var i = 0; i < turn4.x.length; i++) {
+            turn4.peice[i] = turn3.peice[i];
+        }
+        for (var i = 0; i < turn3.x.length; i++) {
+            turn3.peice[i] = turn2.peice[i];
+        }
+        for (var i = 0; i < turn2.x.length; i++) {
+            turn2.peice[i] = turn1.peice[i];
+        }
+        for (var i = 0; i < turn1.x.length; i++) {
+            turn1.peice[i] = turn0.peice[i];
+        }
+        turn0.peice.splice(0, turn0.peice.length);
+        for (var i = 0; i < turn0.x.length; i++) {
+            for (var j = 0; j < black.x.length; j++) {
+                if (turn0.x[i] === black.x[j] && turn0.y[i] === black.y[j]) {
+                    turn0.peice[i] = 'b';
+                }
+            }
+            for (var j = 0; j < white.x.length; j++) {
+                if (turn0.x[i] === white.x[j] && turn0.y[i] === white.y[j]) {
+                    turn0.peice[i] = 'w';
+                }
+            }
+            if (turn0.peice[i] !== 'b' && turn0.peice[i] !=='w') {
+                turn0.peice[i] = 'e';
             }
         }
-        for (var j = 0; j < white.x.length; j++) {
-            if (turn0.x[i] === white.x[j] && turn0.y[i] === white.y[j]) {
-                turn0.peice[i] = 'w';
+    },
+
+    //takes old moves and returns them up the turn objects
+    undo:function() {
+        for (var i = 0; i < turn0.x.length; i++) {
+            turn0.peice[i] = turn1.peice[i];
+        }
+        for (var i = 0; i < turn1.x.length; i++) {
+            turn1.peice[i] = turn2.peice[i];
+        }
+        for (var i = 0; i < turn2.x.length; i++) {
+            turn2.peice[i] = turn3.peice[i];
+        }
+        for (var i = 0; i < turn3.x.length; i++) {
+            turn3.peice[i] = turn4.peice[i];
+        }
+        for (var i = 0; i < turn4.x.length; i++) {
+            turn4.peice[i] = turn5.peice[i];
+        }
+        for (var i = 0; i < turn5.x.length; i++) {
+            turn5.peice[i] = turn6.peice[i];
+        }
+        for (var i = 0; i < turn6.x.length; i++) {
+            turn6.peice[i] = turn7.peice[i];
+        }
+        for (var i = 0; i < turn7.x.length; i++) {
+            turn7.peice[i] = turn8.peice[i];
+        }
+    },
+
+    //pushes turn0 into the player objects
+    recall:function() {
+        black.x = [];
+        black.y = [];
+        white.x = [];
+        white.y = [];
+        for (var i = 0; i < this.x.length; i++) {
+            if (this.peice[i] === 'b') {
+                black.x.push(this.x[i]);
+                black.y.push(this.y[i]);
             }
-        }
-        if (turn0.peice[i] !== 'b' && turn0.peice[i] !=='w') {
-            turn0.peice[i] = 'e';
-        }
-    }
-}
-
-//takes old moves and returns them up the turn objects
-Board.prototype.undo = function() {
-    for (var i = 0; i < turn0.x.length; i++) {
-        turn0.peice[i] = turn1.peice[i];
-    }
-    for (var i = 0; i < turn1.x.length; i++) {
-        turn1.peice[i] = turn2.peice[i];
-    }
-    for (var i = 0; i < turn2.x.length; i++) {
-        turn2.peice[i] = turn3.peice[i];
-    }
-    for (var i = 0; i < turn3.x.length; i++) {
-        turn3.peice[i] = turn4.peice[i];
-    }
-    for (var i = 0; i < turn4.x.length; i++) {
-        turn4.peice[i] = turn5.peice[i];
-    }
-    for (var i = 0; i < turn5.x.length; i++) {
-        turn5.peice[i] = turn6.peice[i];
-    }
-    for (var i = 0; i < turn6.x.length; i++) {
-        turn6.peice[i] = turn7.peice[i];
-    }
-    for (var i = 0; i < turn7.x.length; i++) {
-        turn7.peice[i] = turn8.peice[i];
-    }
-}
-
-//pushes turn0 into the player objects
-Board.prototype.recall = function() {
-    black.x = [];
-    black.y = [];
-    white.x = [];
-    white.y = [];
-    for (var i = 0; i < this.x.length; i++) {
-        if (this.peice[i] === 'b') {
-            black.x.push(this.x[i]);
-            black.y.push(this.y[i]);
-        }
-        else if (this.peice[i] === 'w') {
-            white.x.push(this.x[i]);
-            white.y.push(this.y[i]);
+            else if (this.peice[i] === 'w') {
+                white.x.push(this.x[i]);
+                white.y.push(this.y[i]);
+            }
         }
     }
 }
@@ -235,227 +237,229 @@ Board.prototype.recall = function() {
 // functions for Player objects
 
 //function for groupLines
-Player.prototype.groupLine = function() {
-    for (var i = 0; i < this.group.length; i++) {
-        for (var j = 0; j < this.group.length; j++) {
-            ctx.lineWidth(gridSize/gridNum-minus*2);
-            if (this.group[i] === this.group[j] && i !== j) {
-                if (dist(1,this.x[i], this.y[i], this.x[j], this.y[j])) {
-                    a = this.group[i]-Math.floor(this.group[i]/10)*10;
-                    ctx.strokeStyle = colors[a];
-                    line(gridX + gridSize/gridNum *this.x[i], gridY + gridSize/gridNum *this.y[i], gridX + gridSize/gridNum *this.x[j], gridY + gridSize/gridNum *this.y[j]);
-                }
-            }
-        }
-    }
-}
-
-//function for drawing the peices
-Player.prototype.drawPeice = function() {
-    ctx.lineWidth(0.75);
-    fill = this.color1;
-    ctx.strokStyle = this.color2;
-    for (var i = 0; i<this.x.length; i++) {
-        circle(gridX + gridSize/gridNum *this.x[i], gridY + gridSize/gridNum *this.y[i], gridSize/gridNum-minus);
-    }
-}
-
-//function for removing a peice and prevents stacking peices
-Player.prototype.remove = function (X, Y) {
-    for (var i=0; i<this.x.length; i++) {
-        if (X === this.x[i] && Y === this.y[i]) {
-            if (button === 1) {
-                this.x.splice(i,1);
-                this.y.splice(i,1);
-                //playSound(getSound("rpg/step-heavy"));
-            }
-            remove ++;
-        }
-    }
-}
-
-// find groups of peices
-Player.prototype.findGroups = function () {
-    this.group = [];
-    this.groupIndex = [];
-    for  (var i = 0; i < this.x.length; i++) {
-        this.group[i] = i;
-    }
-    for (var i = 0; i < this.x.length; i++) {
-        for (var j = i+1; j < this.x.length; j++) {
-            if (dist(1, this.x[i], this.y[i], this.x[j], this.y[j])) {
-                for (var k = 0; k < this.group.length; k++) {
-                    if(this.group[j] === this.group[k]) {
-                        this.group[k] = this.group[i];
+Player.prototype = {
+    groupLine:function() {
+        for (var i = 0; i < this.group.length; i++) {
+            for (var j = 0; j < this.group.length; j++) {
+                ctx.lineWidth(gridSize/gridNum-minus*2);
+                if (this.group[i] === this.group[j] && i !== j) {
+                    if (dist(1,this.x[i], this.y[i], this.x[j], this.y[j])) {
+                        a = this.group[i]-Math.floor(this.group[i]/10)*10;
+                        ctx.strokeStyle = colors[a];
+                        line(gridX + gridSize/gridNum *this.x[i], gridY + gridSize/gridNum *this.y[i], gridX + gridSize/gridNum *this.x[j], gridY + gridSize/gridNum *this.y[j]);
                     }
                 }
             }
         }
-    }
-    for (var i = 0; i < this.x.length; i++) {
-        for (var j = i+1; j < this.x.length; j++) {
-            if (dist(1, this.x[i], this.y[i], this.x[j], this.y[j])) {
-                for (var k = 0; k < this.group.length; k++) {
-                    if(this.group[j] === this.group[k]) {
-                        this.group[k] = this.group[i];
+    },
+
+    //function for drawing the peices
+    drawPeice:function() {
+        ctx.lineWidth(0.75);
+        fill = this.color1;
+        ctx.strokStyle = this.color2;
+        for (var i = 0; i<this.x.length; i++) {
+            circle(gridX + gridSize/gridNum *this.x[i], gridY + gridSize/gridNum *this.y[i], gridSize/gridNum-minus);
+        }
+    },
+
+    //function for removing a peice and prevents stacking peices
+    remove:function (X, Y) {
+        for (var i=0; i<this.x.length; i++) {
+            if (X === this.x[i] && Y === this.y[i]) {
+                if (button === 1) {
+                    this.x.splice(i,1);
+                    this.y.splice(i,1);
+                    //playSound(getSound("rpg/step-heavy"));
+                }
+                remove ++;
+            }
+        }
+    },
+
+    // find groups of peices
+    findGroups:function () {
+        this.group = [];
+        this.groupIndex = [];
+        for  (var i = 0; i < this.x.length; i++) {
+            this.group[i] = i;
+        }
+        for (var i = 0; i < this.x.length; i++) {
+            for (var j = i+1; j < this.x.length; j++) {
+                if (dist(1, this.x[i], this.y[i], this.x[j], this.y[j])) {
+                    for (var k = 0; k < this.group.length; k++) {
+                        if(this.group[j] === this.group[k]) {
+                            this.group[k] = this.group[i];
+                        }
                     }
                 }
             }
         }
-    }
-    for (var i = 0; i < this.group.length; i++) {
+        for (var i = 0; i < this.x.length; i++) {
+            for (var j = i+1; j < this.x.length; j++) {
+                if (dist(1, this.x[i], this.y[i], this.x[j], this.y[j])) {
+                    for (var k = 0; k < this.group.length; k++) {
+                        if(this.group[j] === this.group[k]) {
+                            this.group[k] = this.group[i];
+                        }
+                    }
+                }
+            }
+        }
+        for (var i = 0; i < this.group.length; i++) {
+            for (var j = 0; j < this.groupIndex.length; j++) {
+                if (this.group[i] !== this.groupIndex[j]) {
+                    b ++;
+                }
+            }
+            if (b === this.groupIndex.length) {
+                this.groupIndex.push(this.group[i]);
+            }
+            b = 0;
+        }
+    },
+
+    //function for adding peices
+    addPeice:function(X, Y) {
+        this.x.push(X);
+        this.y.push(Y);
+        //playSound(getSound("rpg/hit-clop"));
+        add = 1;
+        turn0.record();
+        start = 0;
+        if (undos > 0) {
+            undos --;
+        }
+    },
+
+    // removes groups of peices
+    removeGroup:function (group) {
+        for (var i = 0; i < this.group.length; i++) {
+            if (this.group[i] === group) {
+                this.x.splice(i, 1);
+                this.y.splice(i, 1);
+                this.group.splice(i, 1);
+                i --;
+            }
+        }
         for (var j = 0; j < this.groupIndex.length; j++) {
-            if (this.group[i] !== this.groupIndex[j]) {
-                b ++;
+            if (this.groupIndex[j] === group) {
+                this.groupIndex.splice(j, 1);
+                j --;
             }
         }
-        if (b === this.groupIndex.length) {
-            this.groupIndex.push(this.group[i]);
-        }
-        b = 0;
-    }
-}
+    },
 
-//function for adding peices
-Player.prototype.addPeice = function(X, Y) {
-    this.x.push(X);
-    this.y.push(Y);
-    //playSound(getSound("rpg/hit-clop"));
-    add = 1;
-    turn0.record();
-    start = 0;
-    if (undos > 0) {
-        undos --;
-    }
-}
-
-// removes groups of peices
-Player.prototype.removeGroup = function (group) {
-    for (var i = 0; i < this.group.length; i++) {
-        if (this.group[i] === group) {
-            this.x.splice(i, 1);
-            this.y.splice(i, 1);
-            this.group.splice(i, 1);
-            i --;
+    // function for detecting captured group
+    detectCaptures:function(X, Y) {
+        if (turn === 1) {
+            black.x.push(X);
+            black.y.push(Y);
+            black.findGroups();
         }
-    }
-    for (var j = 0; j < this.groupIndex.length; j++) {
-        if (this.groupIndex[j] === group) {
-            this.groupIndex.splice(j, 1);
-            j --;
+        else {
+            white.x.push(X);
+            white.y.push(Y);
+            white.findGroups();
         }
-    }
-}
-
-// function for detecting captured group
-Player.prototype.detectCaptures = function(X, Y) {
-    if (turn === 1) {
-        black.x.push(X);
-        black.y.push(Y);
-        black.findGroups();
-    }
-    else {
-        white.x.push(X);
-        white.y.push(Y);
-        white.findGroups();
-    }
-    capture = 0;
-    for (var i = 0; i < this.groupIndex.length; i++) {
-        freedom = 0; 
-        for (var j = 0; j < this.x.length; j++) {
-            if (this.group[j] === this.groupIndex[i]) {
-                freedom += 4;
-                for (var k = 0; k < black.x.length; k++) {
-                    if (dist(1, this.x[j], this.y[j], black.x[k], black.y[k])) {
+        capture = 0;
+        for (var i = 0; i < this.groupIndex.length; i++) {
+            freedom = 0; 
+            for (var j = 0; j < this.x.length; j++) {
+                if (this.group[j] === this.groupIndex[i]) {
+                    freedom += 4;
+                    for (var k = 0; k < black.x.length; k++) {
+                        if (dist(1, this.x[j], this.y[j], black.x[k], black.y[k])) {
+                            freedom --;
+                        }
+                    }
+                    for (var k = 0; k < white.x.length; k++) {
+                        if (dist(1, this.x[j], this.y[j], white.x[k], white.y[k])) {
+                            freedom --;
+                        }
+                    }
+                    if (this.x[j] <= 0 || this.x[j] >= gridNum) {
+                        freedom --;
+                    }
+                    if (this.y[j] <= 0 || this.y[j] >= gridNum) {
                         freedom --;
                     }
                 }
-                for (var k = 0; k < white.x.length; k++) {
-                    if (dist(1, this.x[j], this.y[j], white.x[k], white.y[k])) {
-                        freedom --;
-                    }
-                }
-                if (this.x[j] <= 0 || this.x[j] >= gridNum) {
-                    freedom --;
-                }
-                if (this.y[j] <= 0 || this.y[j] >= gridNum) {
-                    freedom --;
-                }
+            }
+            if (freedom === 0) {
+                capturedGroups.push(this.groupIndex[i]);
+                capture = 1;
             }
         }
-        if (freedom === 0) {
-            capturedGroups.push(this.groupIndex[i]);
-            capture = 1;
+        if (turn === 1) {
+            black.x.splice(black.x.length-1, 1);
+            black.y.splice(black.y.length-1, 1);
+            black.findGroups();
         }
-    }
-    if (turn === 1) {
-        black.x.splice(black.x.length-1, 1);
-        black.y.splice(black.y.length-1, 1);
-        black.findGroups();
-    }
-    else {
-        white.x.splice(white.x.length-1, 1);
-        white.y.splice(white.y.length-1, 1);
-        white.findGroups();
-    }
-}
+        else {
+            white.x.splice(white.x.length-1, 1);
+            white.y.splice(white.y.length-1, 1);
+            white.findGroups();
+        }
+    },
 
-//check for duplicates
-Player.prototype.duplicate = function(X, Y) {
-    duplicate = 1;
-    if (turn === 1) {
-        white.detectCaptures(X, Y);
-        for (var i = 0; i < white.group.length; i++) {
-            if (white.group[i] === capturedGroups[0]) {
-                for (var j = 0; j < turn0.x.length; j++) {
-                    if (white.x[i] === turn0.x[j] && white.y[i] === turn0.y[j]) {
-                        turn0.peice[j] = 'e';
-                        storage.push(j);
+    //check for duplicates
+    duplicate:function(X, Y) {
+        duplicate = 1;
+        if (turn === 1) {
+            white.detectCaptures(X, Y);
+            for (var i = 0; i < white.group.length; i++) {
+                if (white.group[i] === capturedGroups[0]) {
+                    for (var j = 0; j < turn0.x.length; j++) {
+                        if (white.x[i] === turn0.x[j] && white.y[i] === turn0.y[j]) {
+                            turn0.peice[j] = 'e';
+                            storage.push(j);
+                        }
                     }
                 }
             }
         }
-    }
-    else {
-        black.detectCaptures(X, Y);
-        for (var i = 0; i < black.group.length; i++) {
-            if (black.group[i] === capturedGroups[0]) {
-                for (var j = 0; j < turn0.x.length; j++) {
-                    if (black.x[i] === turn0.x[j] && black.y[i] === turn0.y[j]) {
-                        turn0.peice[j] = 'e';
-                        storage.push(j);
+        else {
+            black.detectCaptures(X, Y);
+            for (var i = 0; i < black.group.length; i++) {
+                if (black.group[i] === capturedGroups[0]) {
+                    for (var j = 0; j < turn0.x.length; j++) {
+                        if (black.x[i] === turn0.x[j] && black.y[i] === turn0.y[j]) {
+                            turn0.peice[j] = 'e';
+                            storage.push(j);
+                        }
                     }
                 }
             }
         }
-    }
-    for (var i = 0; i < turn0.x.length; i++) {
-        if (turn0.x[i] === X && turn0.y[i] === Y) {
-            if (turn === 1) {
-                turn0.peice[i] = 'b';
-            }
-            else {
-                turn0.peice[i] = 'w';
-            }
-            for (var j = 0; j < turn0.x.length; j++) {
-                if (turn0.peice[j] !== turn1.peice[j]) {
-                    duplicate = 0;
+        for (var i = 0; i < turn0.x.length; i++) {
+            if (turn0.x[i] === X && turn0.y[i] === Y) {
+                if (turn === 1) {
+                    turn0.peice[i] = 'b';
                 }
+                else {
+                    turn0.peice[i] = 'w';
+                }
+                for (var j = 0; j < turn0.x.length; j++) {
+                    if (turn0.peice[j] !== turn1.peice[j]) {
+                        duplicate = 0;
+                    }
+                }
+                turn0.peice[i] = 'e';
             }
-            turn0.peice[i] = 'e';
         }
-    }
-    if (turn === 1) {
-        for (var i = 0; i < storage.length; i++) {
-            turn0.peice[storage[i]] = 'w';
+        if (turn === 1) {
+            for (var i = 0; i < storage.length; i++) {
+                turn0.peice[storage[i]] = 'w';
+            }
         }
-    }
-    else {
-        for (var i = 0; i < storage.length; i++) {
-            turn0.peice[storage[i]] = 'b';
+        else {
+            for (var i = 0; i < storage.length; i++) {
+                turn0.peice[storage[i]] = 'b';
+            }
         }
+        storage = [];
     }
-    storage = [];
 }
 
 //A function that draws the background
@@ -479,47 +483,49 @@ function background() {
 //complex funtions that are heavily reliant on each other and previous functions
 
 // function for having a turn
-Player.prototype.turn = function(X, Y) {
-    this.duplicate(X, Y);
-    if (duplicate === 0) {
-        this.detectCaptures(X, Y);
-        capturedGroups = [];
-        if (capture === 1) {
-            if (turn === 1) {
-                white.detectCaptures(X, Y);
-                for (var u = 0; u < capturedGroups.length; u++) {
-                    white.removeGroup(capturedGroups[u]);
-                }
-            }
-            else {
-                black.detectCaptures(X, Y);
-                for (var u = 0; u < capturedGroups.length; u++) {
-                    black.removeGroup(capturedGroups[u]);
-                }
-            }
+Player.prototype = {
+    turn:function(X, Y) {
+        this.duplicate(X, Y);
+        if (duplicate === 0) {
+            this.detectCaptures(X, Y);
+            capturedGroups = [];
             if (capture === 1) {
-                    this.addPeice(X, Y);
-            }
-        }
-        else {
-            if (turn === 1) {
-                white.detectCaptures(X, Y);
-                for (var u = 0; u < capturedGroups.length; u++) {
-                    white.removeGroup(capturedGroups[u]);
+                if (turn === 1) {
+                    white.detectCaptures(X, Y);
+                    for (var u = 0; u < capturedGroups.length; u++) {
+                        white.removeGroup(capturedGroups[u]);
+                    }
+                }
+                else {
+                    black.detectCaptures(X, Y);
+                    for (var u = 0; u < capturedGroups.length; u++) {
+                        black.removeGroup(capturedGroups[u]);
+                    }
+                }
+                if (capture === 1) {
+                        this.addPeice(X, Y);
                 }
             }
             else {
-                black.detectCaptures(X, Y);
-                for (var u = 0; u < capturedGroups.length; u++) {
-                    black.removeGroup(capturedGroups[u]);
+                if (turn === 1) {
+                    white.detectCaptures(X, Y);
+                    for (var u = 0; u < capturedGroups.length; u++) {
+                        white.removeGroup(capturedGroups[u]);
+                    }
                 }
+                else {
+                    black.detectCaptures(X, Y);
+                    for (var u = 0; u < capturedGroups.length; u++) {
+                        black.removeGroup(capturedGroups[u]);
+                    }
+                }
+                this.addPeice(X, Y);
             }
-            this.addPeice(X, Y);
+            black.findGroups();
+            white.findGroups();
+            capturedGroups = [];
+            duplicate = 0;
         }
-        black.findGroups();
-        white.findGroups();
-        capturedGroups = [];
-        duplicate = 0;
     }
 }
 
