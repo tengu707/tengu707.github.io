@@ -3,7 +3,7 @@
 //Drawing variables
 var c = document.getElementById("goboard");
 var ctx = c.getContext("2d");
-
+/*
 //basic functions
 
 //A function that draws lines
@@ -33,7 +33,7 @@ function dist(distance, x1, y1, x2, y2) {
     }
     
 }
-
+*/
 //programming variables
 var canvasSize = parsedInt(document.getElementById("canvasSize"));
 var boardSize = parsedInt(document.getElementById("boardSize"));
