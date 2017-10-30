@@ -35,8 +35,8 @@ function dist(distance, x1, y1, x2, y2) {
 }
 */
 //programming variables
-var canvasSize = parsedInt(document.getElementById("canvasSize"));
-var boardSize = parsedInt(document.getElementById("boardSize"));
+var canvasSize = document.getElementById("canvasSize").value;
+var boardSize = document.getElementById("boardSize").value;
 var gridNum = boardSize - 1;
 var gridSize = canvasSize - 100;
 var gridX = 50;
@@ -628,8 +628,8 @@ function showCoords(event) {
 
 //A function that runs once on the webpage loading or restarting the game
 function start() {
-    var canvasSize = parsedInt(document.getElementById("canvasSize"));
-    var boardSize = parsedInt(document.getElementById("boardSize"));
+    var canvasSize = document.getElementById("canvasSize").value;
+    var boardSize = document.getElementById("boardSize").value;
 	/*
     turn = 1;
     start = 1;
