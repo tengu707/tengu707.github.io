@@ -1,7 +1,8 @@
 Current limitations in functions (in rough order of importance)
-onLoad (  https://www.w3schools.com/jsref/event_onload.asp  )
-canvas (may be corrected by onLoad)
+X onLoad (  https://www.w3schools.com/jsref/event_onload.asp  )
+X canvas (may be corrected by onLoad)
 background
+color (from rgb to hexidecimal)
 stroke
 noStroke
 strokeWeight
