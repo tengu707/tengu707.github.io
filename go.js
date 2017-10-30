@@ -16,7 +16,6 @@ function line(x1, y1, x2, y2) {
 function circle(centerX, centerY, radius) {
     ctx.beginPath();
     ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-    ctx.fillStyle
     ctx.stroke();
     ctx.fillStyle = fill;
     ctx.fill();
@@ -238,10 +237,10 @@ Board.prototype.recall = function() {
 Player.prototype.groupLine = function() {
     for (var i = 0; i < this.group.length; i++) {
         for (var j = 0; j < this.group.length; j++) {
-            ctx.lineWidth(gridSize/gridNum-minus*2);
+            ctx.lineWidth = gridSize/gridNum-minus*2;
             if (this.group[i] === this.group[j] && i !== j) {
                 if (dist(1,this.x[i], this.y[i], this.x[j], this.y[j])) {
-                    a = this.group[i]-Math.floor(this.group[i]/10)*10;
+                    a = this.group[i] - Math.floor(this.group[i]/10)*10;
                     ctx.strokeStyle = colors[a];
                     line(gridX + gridSize/gridNum *this.x[i], gridY + gridSize/gridNum *this.y[i], gridX + gridSize/gridNum *this.x[j], gridY + gridSize/gridNum *this.y[j]);
                 }
@@ -252,7 +251,7 @@ Player.prototype.groupLine = function() {
 
 //function for drawing the peices
 Player.prototype.drawPeice = function() {
-    ctx.lineWidth(0.75);
+    ctx.lineWidth = 0.75;
     fill = this.color1;
     ctx.strokStyle = this.color2;
     for (var i = 0; i<this.x.length; i++) {
@@ -528,10 +527,10 @@ function drawBoard() {
     
     //create board
     background();
-    ctx.lineWidth(3);
+    ctx.lineWidth = 3;
 
     //create gridlines
-    stroke(0);
+    ctx.strokeStyle("#000000");
     for (var i = 0; i<=gridNum; i++) {
         line(gridX + gridSize/gridNum * i, gridY, gridX + gridSize/gridNum * i, gridY +gridSize);
         line(gridX, gridY + gridSize/gridNum * i, gridX + gridSize, gridY + gridSize/gridNum * i);
