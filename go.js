@@ -1,13 +1,14 @@
 //v 2.0 (not debugged)
 
 //Drawing variables
-var c = document.getElementById("goboard");
-var ctx = c.getContext("2d");
+
 /*
 //basic functions
 
 //A function that draws lines
 function line(x1, y1, x2, y2) {
+    var c = document.getElementById("goboard");
+    var ctx = c.getContext("2d");
     ctx.beginPath();
     ctx.moveTo(x1, y1);
     ctx.lineTo(x2, y2);
@@ -16,6 +17,8 @@ function line(x1, y1, x2, y2) {
 
 //A function that draws circles
 function circle(centerX, centerY, radius) {
+    var c = document.getElementById("goboard");
+    var ctx = c.getContext("2d");
     ctx.beginPath();
     ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
     ctx.stroke();
@@ -455,6 +458,8 @@ Player.prototype.duplicate = function(X, Y) {
 
 //A function that draws the background
 function background() {
+	var c = document.getElementById("goboard");
+	var ctx = c.getContext("2d");
 	var num=0;
   	// Create gradient
   	var grd = ctx.createLinearGradient(0,0,canvasSize,0);
