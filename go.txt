@@ -1,0 +1,15 @@
+Current limitations in functions (in rough order of importance)
+onLoad (  https://www.w3schools.com/jsref/event_onload.asp  )
+canvas (may be corrected by onLoad)
+background
+stroke
+noStroke
+strokeWeight
+floor
+line
+fill
+ellipse
+rect
+text
+playSound ( http://www.storiesinflight.com/html5/audio.html )
+textSize
