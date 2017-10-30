@@ -1,8 +1,5 @@
 Current limitations in functions (in rough order of importance)
-X onLoad (  https://www.w3schools.com/jsref/event_onload.asp  )
-X canvas (may be corrected by onLoad)
-background
-color (from rgb to hexidecimal)
+Object orientation needs to be redone
 stroke
 noStroke
 strokeWeight
