@@ -1,11 +1,11 @@
-var c = document.getElementById("goCanvas");
+var c = document.getElementById("goboard");
 var ctx = c.getContext("2d");
 var canvasSize = 600
 
 function start() {
   var num=0;
   // Create gradient
-  var grd = ctx.createLinearGradient(0,0,200,0);
+  var grd = ctx.createLinearGradient(0,0,canvasSize,0);
   grd.addColorStop(0,"#D68910");
   for (i = 0; i < 20; i++) {
 	num = i / 20
