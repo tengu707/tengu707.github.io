@@ -537,7 +537,7 @@ function drawBoard() {
     ctx.lineWidth(3);
 
     //create gridlines
-    stroke(0);
+    lineStyle = "#000000";
     for (var i = 0; i<=gridNum; i++) {
         line(gridX + gridSize/gridNum * i, gridY, gridX + gridSize/gridNum * i, gridY +gridSize);
         line(gridX, gridY + gridSize/gridNum * i, gridX + gridSize, gridY + gridSize/gridNum * i);
