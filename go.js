@@ -16,9 +16,9 @@ function line(x1, y1, x2, y2) {
 }
 
 //A function that draws circles
-function circle(centerX, centerY, radius) {
+function circle(centerX, centerY, diameter) {
     ctx.beginPath();
-    ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+    ctx.arc(centerX, centerY, diameter/2, 0, 2 * Math.PI);
     ctx.stroke();
     ctx.fillStyle = fill;
     ctx.fill();
@@ -34,7 +34,7 @@ function dist(distance, x1, y1, x2, y2) {
     }
     
 }
-*/
+
 //programming variables
 var canvasSize = document.getElementById("canvasSize").value;
 var boardSize = document.getElementById("boardSize").value;
@@ -518,6 +518,7 @@ Player.prototype.turn = function(X, Y) {
     }
 }
 
+
 //draw function to keep board animating on current data
 function drawBoard() {
     
@@ -575,17 +576,19 @@ function drawBoard() {
     white.drawPeice();
     
     //Turn indicator
-    ctx.font = "25px Ariel";
+    ctx.font = "20px Ariel";
     ctx.lineWidth = 1;
     ctx.fillStyle = "#CFC07F";
     ctx.fillRect(10, 10, 125, 30);
     ctx.rect(10, 10, 125, 30);
     ctx.stroke();
     ctx.lineWidth = 0.75;
+    ctx.fillStyle = "#000000";
     if (turn===1) { ctx.fillText("TURN: Black", 20, 35);}
     else if (turn===-1) { ctx.fillText("TURN: White", 20, 35);}
     else {ctx.fillText("TURN:", 20, 35);}
 }
+
 
 //Detects clicking and calls the appropriate function based on where is clicked
 function showCoords(event) {
@@ -622,12 +625,14 @@ function showCoords(event) {
     drawBoard();
 }
 
-*/
-
 //A function that runs once on the webpage loading or restarting the game
 function start() {
-    var canvasSize = document.getElementById("canvasSize").value;
-    var boardSize = document.getElementById("boardSize").value;
+    canvasSize = document.getElementById("canvasSize").value;
+    document.getElementById("goboard").width = canvasSize;
+    document.getElementById("goboard").height = canvasSize;
+    boardSize = document.getElementById("boardSize").value;
+    gridNum = boardSize - 1;
+	gridSize = canvasSize - 100;
     turn = 1;
     turnStart = 1;
     undos = 8;
@@ -640,9 +645,10 @@ function start() {
     turn6 = new Board();
     turn7 = new Board();
     turn8 = new Board();
-    black = new Player(0, 0, 0, 255, 255, 255);
-    white = new Player(255, 255, 255, 0, 0, 0);
+    black = new Player("#000000", "#ffffff");
+	white = new Player("#ffffff", "#000000");
     button = 0;
+    background();
     drawBoard();
       
 }
