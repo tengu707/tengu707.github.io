@@ -460,7 +460,7 @@ function background() {
   	var grd = ctx.createLinearGradient(0,0,canvasSize,0);
   	grd.addColorStop(0,"#D68910");
 	for (i = 0; i < 20; i++) {
-		num = i / 20
+		num = i / 20;
     		grd.addColorStop(num,"#D68910");	
 		grd.addColorStop(num + 0.02,"#B9770E");
     		grd.addColorStop(num + 0.04,"#D68910");
