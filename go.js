@@ -592,8 +592,10 @@ function drawBoard() {
 
 //Detects clicking and calls the appropriate function based on where is clicked
 function showCoords(event) {
-    var mouseX = event.clientX - document.getElementById("goboard").offsetLeft;
-    var mouseY = event.clientY - document.getElementById("goboard").offsetTop;
+    var scrollLeft = (window.pageXOffset !== undefined) ? window.pageXOffset : (document.documentElement || document.body.parentNode || document.body).scrollLeft;
+    var scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+    var mouseX = event.clientX - document.getElementById("goboard").offsetLeft + scrollLeft;
+    var mouseY = event.clientY - document.getElementById("goboard").offsetTop + scrollTop;
     mouseGridX = Math.round((mouseX-gridX)/gridSize*gridNum);
     mouseGridY = Math.round((mouseY-gridY)/gridSize*gridNum);
     black.remove(mouseGridX, mouseGridY);
