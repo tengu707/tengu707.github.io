@@ -4,10 +4,12 @@ var string = "";
 //Function for determining the statistics of the inputted text
 function statistics() {
   //Define Local Variables
+  //Variables for the reported statistics
   var numOfSentences = 0;
   var numOfSpaces = 0;
   var numOfWords = 0;
   var aveWordPerSentence = 0;
+  //Variables used in the creation of the statistics
   var newWord = 0;
   var sentenceStarted = 0;
   var wordLength = 0;
