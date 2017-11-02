@@ -1,7 +1,9 @@
+//Defining global variables
 var string = "";
 
+//Function for determining the statistics of the inputted text
 function statistics() {
-  //Define Variables
+  //Define Local Variables
   var numOfSentences = 0;
   var numOfSpaces = 0;
   var numOfWords = 0;
@@ -79,18 +81,31 @@ function statistics() {
   else {
     document.getElementById("ave").innerHTML = "There is an average of " + aveWordPerSentence.toString() +" words per sentence.";
   }
+  //Write the sentence in the bottom paragraph
   document.getElementById("paragraph").innerHTML = string;
 }
+
+//Function for highlighting spaces
 function highlightSpaces() {
+  //Define local variables
+  //Hstring to modify the string global variable
   var hString = string;
+  //Highlight defines which color we highlight
   var highlight = 1;
+  //loop through the the string
   for (i = 0; i < hString.length; i++) {
+    //if its a space then highlight
     if (hString[i] === " ") {
+      //if highlight = 1 then highlight the color
       if (highlight === 1) {
+        //Rewrites the string with a highlight
         hString = hString.substring(0,i) + "<span class='highlight1'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
+        //Add to variable i the amount of characters added to the string to avoid restringing the html marks
         i += 32;
+        //Alternate to the next color
         highlight = highlight * -1;
       }
+      //Same as the previous if, except with a different highlight color
       else {
         hString = hString.substring(0,i) + "<span class='highlight2'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
         i += 32;
@@ -98,25 +113,38 @@ function highlightSpaces() {
       }
     }
   }
+  //Write the modified string to the paragraph element
   document.getElementById("paragraph").innerHTML = hString;
 }
+//Function for highlighting words
 function highlightWords() {
+  //Define local variables
+  //Hstring to modify the string global variable
   var hString = string;
+  //Highlight defines which color we highlight
   var highlight = 1;
+  //Repeat is true, to be used to define when to change the color
   var repeat = true;
+  //For loop through the hstring variable
   for (i = 0; i < hString.length; i++) {
+    //Check to see if a letter matches
     if (hString[i].match(/[a-z]/i)) {
       if (highlight === 1) {
+        //highlight the matched peice
         hString = hString.substring(0,i) + "<span class='highlight1'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
+        //Add to variable i the amount of characters added to the string to avoid restringing the html marks
         i += 32;
+        //Define repeat as true so that the highlight will be the same for the entire word
         repeat = true;
       }
+      //Same as the above except with a different highlight color
       else {
         hString = hString.substring(0,i) + "<span class='highlight2'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
         i += 32;
         repeat = true;
       }
     }
+    //If not a letter but the previous was a letter change the highlight and repeat values
     else if (repeat) {
       highlight = highlight * -1;
       repeat = false;
@@ -124,40 +152,87 @@ function highlightWords() {
   }
   document.getElementById("paragraph").innerHTML = hString;
 }
+//Function for highlighting sentences
 function highlightSentences() {
+  //Define local variables
+  //Hstring to modify the string global variable
   var hString = string;
+  //Highlight defines which color we highlight
   var highlight = 1;
+  //Repeat is true, to be used to define when to change the color
   var repeat = true;
+  var sentenceStarted = false;
+  //For loop through the hstring variable
   for (i = 0; i < hString.length; i++) {
+    //Check to see if the hstring peice is not a punctuation
     if (hString[i] !== "!" && hString[i] !== "?" && hString[i] !== ".") {
-      if (highlight === 1) {
+      //Check to see if a letter is written
+      if (hString[i].match(/[a-z]/i)) {
+        //If a letter is written, if so then start highlighting the sentence
+        sentenceStarted = true;
+      }
+      //Check to see what color to highlight and sentence has been started
+      if (highlight === 1 && sentenceStarted) {
+        //Rewrite the hstring to highlight the peice
         hString = hString.substring(0,i) + "<span class='highlight1'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
+        //Add to variable i the amount of characters added to the string to avoid restringing the html marks
         i += 32;
+        //Define repeat as true so that the highlight will be the same for the entire word
         repeat = true;
       }
-      else {
+      //Same as the above with a different highlight color
+      else if (sentenceStarted) {
         hString = hString.substring(0,i) + "<span class='highlight2'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
         i += 32;
         repeat = true;
       }
     }
-    else if (repeat) {
+    //If it is a punctuation and a sentence was started
+    else if (repeat && sentenceStarted) {
+      //Highlight the punctuation
+      if (highlight === 1) {
+        //Rewrite the hstring to highlight the peice
+        hString = hString.substring(0,i) + "<span class='highlight1'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
+        //Add to variable i the amount of characters added to the string to avoid restringing the html marks
+        i += 32;
+      }
+      //Same as the above with a different highlight color
+      else {
+        hString = hString.substring(0,i) + "<span class='highlight2'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
+        i += 32;
+      }
+      //Change the highlight color
       highlight = highlight * -1;
+      //Change the repeat so a new sentence is started
       repeat = false;
+      //Change sentenceStarted so a new sentence is started
+      sentenceStarted = false;
     }
   }
+  //Write the modified string to the paragraph element
   document.getElementById("paragraph").innerHTML = hString;
 }
+//Function for highlighting punctuation
 function highlightPunctuation() {
+  //Define local variables
+  //Hstring to modify the string global variable
   var hString = string;
+  //Highlight defines which color we highlight
   var highlight = 1;
+  //For loop through the hstring variable
   for (i = 0; i < hString.length; i++) {
+    //Check to see if a punctuation was written
     if (hString[i].match(/[.|!|?]/)) {
+      //if highlight = 1 then highlight the color
       if (highlight === 1) {
+        //Rewrites the string with a highlight
         hString = hString.substring(0,i) + "<span class='highlight1'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
+        //Add to variable i the amount of characters added to the string to avoid restringing the html marks
         i += 32;
+        //Alternate to the next color
         highlight = highlight * -1;
       }
+      //Same as the previous if, except with a different highlight color
       else {
         hString = hString.substring(0,i) + "<span class='highlight2'>" + hString.substring(i,i + 1) + "</span>" + hString.substring(i + 1);
         i += 32;
@@ -165,8 +240,11 @@ function highlightPunctuation() {
       }
     }
   }
+  //Write the modified string to the paragraph element
   document.getElementById("paragraph").innerHTML = hString;
 }
+//The remove highlight function
 function noHighlight() {
+  //Write the original string to the paragraph element
   document.getElementById("paragraph").innerHTML = string;
 }
