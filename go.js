@@ -38,6 +38,8 @@ function dist(distance, x1, y1, x2, y2) {
 //programming variables
 var canvasSize = document.getElementById("canvasSize").value;
 var boardSize = document.getElementById("boardSize").value;
+var numOfPlayers = document.getElementByName("numOfPlayers").value;
+alert(numOfPlayers);
 var gridNum = boardSize - 1;
 var gridSize = canvasSize - 100;
 var gridX = 50;
@@ -633,6 +635,8 @@ function start() {
     document.getElementById("goboard").width = canvasSize;
     document.getElementById("goboard").height = canvasSize;
     boardSize = document.getElementById("boardSize").value;
+	var numOfPlayers = document.getElementByName("numOfPlayers").value;
+	alert(numOfPlayers);
     gridNum = boardSize - 1;
 	gridSize = canvasSize - 100;
     turn = 1;
