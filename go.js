@@ -663,20 +663,20 @@ function skip() {
             skipCount++;
         }
         else {
-            document.getElementById("skip").innerHTML = "Remove all dead peices, then click here";
+            document.getElementById("skipbutton").innerHTML = "Remove all dead peices, then click here";
 	    turn = 0;
             button++;
         }
     }
     else if (button === 1) {
-	document.getElementById("skip").innerHTML = "Fill in blacks territory, then click here";
+	document.getElementById("skipbutton").innerHTML = "Fill in blacks territory, then click here";
 	turn = 1;
         button++;
     }
     else if (button === 2) {
 	turn = 0;
 	score = black.x.length;
-	document.getElementById("skip").innerHTML = "Click here for score";
+	document.getElementById("skipbutton").innerHTML = "Click here for score";
 	alert("Black:" + score + "   White:" + (boardSize * boardSize - score);
     }
 	drawBoard();
