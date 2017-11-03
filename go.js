@@ -663,21 +663,13 @@ function skip() {
             skipCount++;
         }
         else {
-            document.getElementById("skipbutton").innerHTML = "Remove all dead peices, then click here";
-	    turn = 0;
+            x1= 140;
+            x2 = 385;
             button++;
         }
     }
-    else if (button === 1) {
-	document.getElementById("skipbutton").innerHTML = "Fill in blacks territory, then click here";
-	turn = 1;
+    else {
         button++;
-    }
-    else if (button === 2) {
-	turn = 0;
-	score = black.x.length;
-	document.getElementById("skipbutton").innerHTML = "Click here for score";
-	alert("Black:" + score + "   White:" + (boardSize * boardSize - score);
     }
 	drawBoard();
 }
