@@ -677,7 +677,7 @@ function skip() {
 	//turn = 0;
 	//score = black.x.length;
 	document.getElementById("skipbutton").innerHTML = "Click here for score";
-	alert("Black:" + score + "   White:" + (boardSize * boardSize - score);
+	//alert("Black:" + score + "   White:" + (boardSize * boardSize - score);
     }
 	drawBoard();
 }
