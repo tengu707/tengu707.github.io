@@ -664,20 +664,19 @@ function skip() {
         }
         else {
             document.getElementById("skipbutton").innerHTML = "Remove all dead peices, then click here";
-	    //turn = 0;
+	    turn = 0;
             button++;
         }
     }
     else if (button === 1) {
 	document.getElementById("skipbutton").innerHTML = "Fill in blacks territory, then click here";
-	//turn = 1;
+	turn = 1;
         button++;
     }
     else if (button === 2) {
-	//turn = 0;
-	//score = black.x.length;
+	score = black.x.length;
 	document.getElementById("skipbutton").innerHTML = "Click here for score";
-	//alert("Black:" + score + "   White:" + (boardSize * boardSize - score);
+	alert("Black:" + score + "   White:" + (boardSize * boardSize - score));
     }
 	drawBoard();
 }
