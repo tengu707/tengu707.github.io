@@ -676,7 +676,8 @@ function skip() {
     else if (button === 2) {
 	score = black.x.length;
 	document.getElementById("skipbutton").innerHTML = "Click here for score";
-	alert("Black:" + score + "   White:" + (boardSize * boardSize - score));
+	var alertString = "Black:" + score + "   White:" + (boardSize * boardSize - score);
+	alert(alertString);
     }
 	drawBoard();
 }
