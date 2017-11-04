@@ -634,8 +634,11 @@ function start() {
     document.getElementById("goboard").width = canvasSize;
     document.getElementById("goboard").height = canvasSize;
     boardSize = document.getElementById("boardSize").value;
-	numOfPlayers = document.querySelector('input[name="numOfPlayers"]:checked').value;
-	alert(numOfPlayers);
+	for (var i = 0; i< document.getElementByName("numOfPlayers").length; i++) {
+		if (document.getElementByName("numOfPlayers")[i].checked) {
+			numOfPlayers = document.getElementByName("numOfPlayers")[i].value;
+		}
+	}
     gridNum = boardSize - 1;
 	gridSize = canvasSize - 100;
     turn = 1;
