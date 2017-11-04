@@ -634,9 +634,10 @@ function start() {
     document.getElementById("goboard").width = canvasSize;
     document.getElementById("goboard").height = canvasSize;
     boardSize = document.getElementById("boardSize").value;
-	for(var i = 0; i < document.getElementByName("numOfPlayers").length; i++) {
+	for(var i = 0; i = document.getElementByName("numOfPlayers").length; i++) {
 		if (document.getElementByName("numOfPlayers")[i].checked) {
 			numOfPlayers = document.getElementByName("numOfPlayers")[i].value;
+			break;
 		}
 	}
 	alert(numOfPlayers);
