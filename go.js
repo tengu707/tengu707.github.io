@@ -639,6 +639,7 @@ function start() {
 			numOfPlayers = document.getElementByName("numOfPlayers")[i].value;
 		}
 	}
+	alert(numOfPlayers);
     gridNum = boardSize - 1;
 	gridSize = canvasSize - 100;
     turn = 1;
