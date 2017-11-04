@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>text analyzer</title>
+    <link rel="stylesheet" type="text/css" href="https://tengu707.github.io/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Contrail+One" rel="stylesheet">
+  </head>
+  <body onLoad="start()">
+    <h1>Chess game</h1>
+    <a href="https://en.wikipedia.org/wiki/Go_(game)" target="_blank">Click here for rules</a>
+    <br><br>
+    <canvas height="600" width="600" id="goboard" onclick="showCoords(event)"></canvas>
+    <br>
+    <button type="button" id="restartbutton" onclick="start()">RESTART</button>
+    <br>
+    <p>Canvas Size:</p>
+    <input id="canvasSize" type="text" value="500">
+    <br><br>
+    <a href="https://tengu707.github.io/index.html">Homepage</a>
+    <script src="https://tengu707.github.io/chess.js">
+    </script>
+  </body>
+</html>
