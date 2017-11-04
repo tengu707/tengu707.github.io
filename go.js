@@ -634,6 +634,7 @@ function start() {
     document.getElementById("goboard").width = canvasSize;
     document.getElementById("goboard").height = canvasSize;
     boardSize = document.getElementById("boardSize").value;
+	/*
 	if (document.getElementById("2players").checked === "true") {
 		numOfPlayers = 2;
 	}
@@ -643,6 +644,7 @@ function start() {
 	if else (document.getElementById("4players").checked === "true") {
 		numOfPlayers = 4;
 	}
+	*/
 	alert(numOfPlayers);
     gridNum = boardSize - 1;
 	gridSize = canvasSize - 100;
