@@ -66,5 +66,8 @@ function showCoords(event) {
 }
 
 function start() {
+  canvasSize = document.getElementById("canvasSize").value;
+  document.getElementById("chessBoard").width = canvasSize;
+  document.getElementById("chessBoard").height = canvasSize;
   background();
 }
