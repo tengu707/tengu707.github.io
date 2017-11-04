@@ -635,13 +635,13 @@ function start() {
     document.getElementById("goboard").height = canvasSize;
     boardSize = document.getElementById("boardSize").value;
 	
-	if (document.getElementById("2players").checked === "true") {
+	if (document.getElementById("2players").checked) {
 		numOfPlayers = 2;
 	}
-	if else (document.getElementById("3players").checked === "true") {
+	if else (document.getElementById("3players").checked) {
 		numOfPlayers = 3;
 	}
-	if else (document.getElementById("4players").checked === "true") {
+	if else (document.getElementById("4players").checked) {
 		numOfPlayers = 4;
 	}
 	
