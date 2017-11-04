@@ -38,7 +38,7 @@ function dist(distance, x1, y1, x2, y2) {
 //programming variables
 var canvasSize = document.getElementById("canvasSize").value;
 var boardSize = document.getElementById("boardSize").value;
-//var numOfPlayers = 2;
+var numOfPlayers = 2;
 var gridNum = boardSize - 1;
 var gridSize = canvasSize - 100;
 var gridX = 50;
