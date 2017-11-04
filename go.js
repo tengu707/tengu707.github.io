@@ -645,7 +645,7 @@ function start() {
 		numOfPlayers = 4;
 	}
 	*/
-	//alert(numOfPlayers);
+	alert(numOfPlayers);
     gridNum = boardSize - 1;
 	gridSize = canvasSize - 100;
     turn = 1;
