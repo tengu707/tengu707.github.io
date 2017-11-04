@@ -37,17 +37,17 @@ function background() {
   //Define rectangle size
   var rectSize = canvasSize / boardSize;
   //Create checkerboard
-  fill = "#000000";
+  fill = "#888888";
   for (var i = 0; i < boardSize; i++) {
     if (fill ==="#ffffff") {
-      fill = "#000000";
+      fill = "#888888";
     }
     else {
       fill = "#ffffff";
     }
     for (var j = 0; j < boardSize; j++) {
       if (fill ==="#ffffff") {
-        fill = "#000000";
+        fill = "#888888";
       }
       else {
         fill = "#ffffff";
