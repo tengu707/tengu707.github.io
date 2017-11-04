@@ -1,6 +1,7 @@
 //basic functions
 var c = document.getElementById("chessBoard");
 var ctx = c.getContext("2d");
+var fill = "#000000";
 
 //A function that draws lines
 function line(x1, y1, x2, y2) {
@@ -30,7 +31,6 @@ function rectangle(x1, y1, width, height) {
 //Define variables
 var canvasSize = document.getElementById("canvasSize").value;
 var boardSize = 8;
-var fill = "#000000";
 
 //Draw the board
 function background() {
