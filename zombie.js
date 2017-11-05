@@ -31,13 +31,110 @@ function rectangle(x1, y1, width, height) {
 //Define variables
 var canvasSize = document.getElementById("canvasSize").value;
 
+//Create a list of names
+var names = {
+  first:{
+    male:[
+      "Noah",
+      "Liam",
+      "Mason",
+      "Jacob",
+      "William",
+      "Ethan",
+      "James",
+      "Alexander",
+      "Michael",
+      "Ben",
+      "Elijah",
+      "Daniel",
+      "Aiden",
+      "Logan",
+      "Matt",
+      "Lucas",
+      "Jack",
+      "Dave",
+      "Oliver",
+      "Joe"
+    ],
+    female:[
+      "Sarah",
+      "Rose",
+      "Emma",
+      "Olivia",
+      "Sophia",
+      "Ava",
+      "Isabella",
+      "Mia",
+      "Abigail",
+      "Emily",
+      "Madison",
+      "Beth",
+      "Chloe",
+      "Avery",
+      "Zoey",
+      "Lily",
+      "Hannah",
+      "Alli",
+      "Nora",
+      "Anna"
+      ]
+	},
+  last:[
+    "Brown",
+    "Smith",
+    "Johnson",
+    "Williams",
+    "Jones",
+    "Davis",
+    "Miller",
+    "Wilson",
+    "Moore",
+    "Taylor",
+    "Anderson",
+    "Thomas",
+    "Jackson",
+    "White",
+    "Harris",
+    "Martin",
+    "Thompson",
+    "Garcia",
+    "Martinez",
+    "Robinson",
+    "Clark",
+    "Rodriguez",
+    "Lewis",
+    "Lee",
+    "Walker",
+    "Hall",
+    "Allen",
+    "Young"
+  ]
+};
+
+function randomName(Gender) {
+	if (Gender === "male") {
+      return names.first.male[Math.round(Math.random() * (names.first.male.length - 1))] 
+      + " " + names.last[Math.round(Math.random() * (names.last.length - 1))];
+    }
+    else {
+      return names.first.female[Math.round(Math.random() * (names.first.female.length - 1))] 
+      + " " + names.last[Math.round(Math.random() * (names.last.length - 1))];
+    }
+}
+
 //Defines the Human object
-function Human(Name, Avatar, Team, Level, Class, X, Y) {
-  this.name = Name;
-  this.avatar = Avatar; //Boolean (only 1)
-  this.team = Team; //Which side they are on
-  this.class = Class; //Describes what the human is specialized in
-  this.level = Level; //How powerfull the human is
+function Human(Name, Gender, Avatar, Team, Level, Class, X, Y, Z) {
+  if (Name === "random") {
+    this.name = randomName(Gender);
+  }
+  else {
+    this.name = Name; //Identifier, string
+  }
+  this.gender = Gender; //Gender identity, male female (or transgender in future?), string
+  this.avatar = Avatar; //Main character or not, boolean
+  this.team = Team; //Which side they are on, string
+  this.class = Class; //Describes what the human is specialized in, string
+  this.level = Level; //How powerfull the human is, integer
   this.experience = 0;
   this.weapon = "na";
   this.armor = "na";
@@ -47,36 +144,44 @@ function Human(Name, Avatar, Team, Level, Class, X, Y) {
   this.vision = 3;
   this.baseDamage = 2 * this.level;
   this.range = 1;
-  this.hunger = 100;
   this.health = 100;
   this.energy = 100;
   this.aim = 0.95;
-  this.locationX = X;
-  this.locationY = Y;
+  this.location.x = X; //Board location x axis, integer
+  this.location.y = Y; //Board location y axis, integer
+  this.location.z = Z; //Board location z axis, integer
 }
 
 //Defines the Item object
-function Item(Name, Type, PowerModifier, Description) {
+function Item(Name, Type, PowerModifier, Description, X, Y, Z) {
   this.name = Name; //Name of the item
   this.type = Type; //Where the item is used
   this.powerMod = PowerModifier; //A modifier that increases the effect of the item
   this.description = Description; //A description of the item
+  this.location.x = X; //Board location x axis, integer
+  this.location.y = Y; //Board location y axis, integer
+  this.location.z = Z; //Board location z axis, integer
 }
 
 //Defines the Zombie Object
-function Zombie(Type, Level, X, Y) {
+function Zombie(Type, Level, X, Y, Z) {
   this.type = Type;
   this.level = Level;
-  this.x = X;
-  this.y = Y;
+  this.location.x = X; //Board location x axis, integer
+  this.location.y = Y; //Board location y axis, integer
+  this.location.z = Z; //Board location z axis, integer
 }
 
 //Define the types of spaces
-function Space(Type, Breakable, Passable, Description) {
+function Space(Type, Breakable, Passable, Description, Color, X, Y, Z) {
   this.type = Type;
   this.breakable = Breakable;
   this.passable = Passable;
   this.description = Description;
+  this.color = Color;
+  this.location.x = X; //Board location x axis, integer
+  this.location.y = Y; //Board location y axis, integer
+  this.location.z = Z; //Board location z axis, integer
 }
 
 //Defines the board
