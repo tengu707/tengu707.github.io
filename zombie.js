@@ -146,6 +146,7 @@ function Human(Name, Gender, Avatar, Team, Level, Class, X, Y, Z) {
   this.range = 1;
   this.health = 100;
   this.energy = 100;
+  this.status = "na";
   this.aim = 0.95;
   this.location.x = X; //Board location x axis, integer
   this.location.y = Y; //Board location y axis, integer
