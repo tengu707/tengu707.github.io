@@ -126,10 +126,10 @@ function randomName(Gender) {
 //Defines the Human object
 function Human(Name, Gender, Avatar, Team, Level, Class, X, Y, Z) {
   if (Name === "random") {
-    this.name = randomName(Gender);
+    this.surname = randomName(Gender);
   }
   else {
-    this.name = Name; //Identifier, string
+    this.surname = Name; //Identifier, string
   }
   this.gender = Gender; //Gender identity, male female (or transgender in future?), string
   this.avatar = Avatar; //Main character or not, boolean
@@ -149,9 +149,9 @@ function Human(Name, Gender, Avatar, Team, Level, Class, X, Y, Z) {
   this.energy = 100;
   this.status = "na";
   this.aim = 0.95;
-  this.location.x = X; //Board location x axis, integer
-  this.location.y = Y; //Board location y axis, integer
-  this.location.z = Z; //Board location z axis, integer
+  this.x = X; //Board location x axis, integer
+  this.y = Y; //Board location y axis, integer
+  this.z = Z; //Board location z axis, integer
   playerList.push(this);
 }
 
@@ -161,19 +161,16 @@ function Item(Name, Type, PowerModifier, Description, X, Y, Z) {
   this.type = Type; //Where the item is used
   this.powerMod = PowerModifier; //A modifier that increases the effect of the item
   this.description = Description; //A description of the item
-  this.location.x = X; //Board location x axis, integer
-  this.location.y = Y; //Board location y axis, integer
-  this.location.z = Z; //Board location z axis, integer
 }
 
 //Defines the Zombie Object
-function Zombie(Type, Level, X, Y, Z) {
-  this.type = Type;
+function Zombie(Class, Level, X, Y, Z) {
+  this.class = Class;
   this.level = Level;
   this.maxHealth = 100;
-  this.location.x = X; //Board location x axis, integer
-  this.location.y = Y; //Board location y axis, integer
-  this.location.z = Z; //Board location z axis, integer
+  this.x = X; //Board location x axis, integer
+  this.y = Y; //Board location y axis, integer
+  this.z = Z; //Board location z axis, integer
 }
 
 //Define the types of spaces
