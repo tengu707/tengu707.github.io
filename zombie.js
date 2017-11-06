@@ -147,7 +147,7 @@ function Human(Name, Gender, Avatar, Team, Level, Class, X, Y, Z) {
   this.range = 1;
   this.health = 100;
   this.energy = 100;
-  this.status = "na";
+  this.effect = "na";
   this.aim = 0.95;
   this.x = X; //Board location x axis, integer
   this.y = Y; //Board location y axis, integer
@@ -156,11 +156,11 @@ function Human(Name, Gender, Avatar, Team, Level, Class, X, Y, Z) {
 }
 
 //Defines the Item object
-function Item(Name, Type, PowerModifier, Description, X, Y, Z) {
-  this.name = Name; //Name of the item
-  this.type = Type; //Where the item is used
+function Item(Name, Class, PowerModifier, Flavor, X, Y, Z) {
+  this.surname = Name; //Name of the item
+  this.class = Class; //Where the item is used
   this.powerMod = PowerModifier; //A modifier that increases the effect of the item
-  this.description = Description; //A description of the item
+  this.flavor = Flavor; //A description of the item
 }
 
 //Defines the Zombie Object
@@ -174,14 +174,14 @@ function Zombie(Class, Level, X, Y, Z) {
 }
 
 //Define the types of spaces
-function Space(Name, Breakable, MaxHealth, Passable, Transparent, Color, Description) {
-  this.name = Name;
+function Space(Name, Breakable, MaxHealth, Passable, Transparent, Color, Flavor) {
+  this.surname = Name;
   this.breakable = Breakable
   this.maxHealth = MaxHealth;
   this.passable = Passable;
   this.transparent = Transparent;
   this.color = Color;
-  this.description = Description;
+  this.flavor = Flavor;
 }
 
 //Define different spaces
