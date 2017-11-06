@@ -175,40 +175,101 @@ function Zombie(Class, Level, X, Y, Z) {
 }
 
 //Define the types of spaces
-function Space(Name, Breakable, MaxHealth, Passable, Transparent, Color, Flavor) {
+function Space(Name, Breakable, MaxHealth, Passable, Transparent, Descriptor, Flavor) {
   this.surname = Name;
   this.breakable = Breakable
   this.maxHealth = MaxHealth;
   this.passable = Passable;
   this.transparent = Transparent;
-  this.hexColor = Color;
+  this.descriptor = Descriptor;
   this.flavor = Flavor;
 }
 
 //Define different spaces
-var wall = new Space("Wall", true, 1000, false, false, "#888888", "A wall that seperates inside from outside, tough to break");
-var weakWall = new Space("Weak Wall", true, 100, false, false, "#888888", "A wall that seperates inside from outside, easy to break");
-var toughWall = new Space("Tough Wall", false, 1000, false, false, "#888888", "A wall that seperates inside from outside, impossible to break");
-var floor = new Space("Floor", false, 1000, true, true, "#d5a65d", "A place to walk on, indoors unless walls get broken");
-var weakFloor = new Space("Weak Floor", true, 100, true, true, "#d5a65d", "A place to walk on, until it gets broken");
-var weakWindow = new Space("Window", true, 100, false, true, "clear", "Something people look out of");
-var toughWindow = new Space("Bullet Proof Window", false, 1000, false, true, "clear", "Something banktellers look out of");
-var barrier = new Space("Barrier", true, 500, false, true, "#f0ff00", "What people build to keep zombies out");
-var closedDoor = new Space("Door", true, 500, false, false, "#ff0000", "Used to enter or leave");
-var lockedDoor = new Space("Door", true, 500, false, false, "#ff0000", "Not used to enter or leave");
-var openedDoor = new Space("Door", false, 500, true, true, "clear", "Were you raised in a barn");
-var closedSteelDoor = new Space("Steel Door", false, 1000, false, false, "#4f4f4f", "Used to enter or leave");
-var lockedSteelDoor = new Space("Steel Door", false, 1000, false, false, "#4f4f4f", "Not used to enter or leave");
-var openedSteelDoor = new Space("Steel Door", false, 1000, true, true, "clear", "Were you raised in a barn");
-var stairs = 0;
-var empty = new Space("Empty Space", false, 1, true, true, "#000000", "Empty space, existential nothingness");
-var chest = new Space("Chest", true, 250, false, true, "#ff00ff", "Were treasure is hidden");
-var library = new Space("Library", true, 100, false, false, "#ffff00", "Were knowledge is hidden");
-var grass = new Space("Grass", false, 500, true, true, "#00ff00", "The type people mow, not smoke");
-var road = new Space("Road", false, 500, true, true, "#383838", "A path for cars");
-var tree = new Space("Tree", true, 1000, true, false, "#006000", "Nature's skyscrapers");
-var water = new Space("Water", false, 4000, false, true, "#0f00ff", "What people swim in");
-var rubble = new Space("Rubble", false, 4000, true, true, "#b4b4b4", "What used to be a building");
+var wall = new Space("Wall", true, 1000, false, false, "Wall", "A wall that seperates inside from outside, tough to break");
+var weakWall = new Space("Weak Wall", true, 100, false, false, "Wall", "A wall that seperates inside from outside, easy to break");
+var toughWall = new Space("Tough Wall", false, 1000, false, false, "Wall", "A wall that seperates inside from outside, impossible to break");
+var floor = new Space("Floor", false, 1000, true, true, "Floor", "A place to walk on, indoors unless walls get broken");
+var weakFloor = new Space("Weak Floor", true, 100, true, true, "Floor", "A place to walk on, until it gets broken");
+var weakWindow = new Space("Window", true, 100, false, true, "Window", "Something people look out of");
+var toughWindow = new Space("Bullet Proof Window", false, 1000, false, true, "Window", "Something banktellers look out of");
+var barrier = new Space("Barrier", true, 500, false, true, "Barrier", "What people build to keep zombies out");
+var closedDoor = new Space("Door", true, 500, false, false, "Closed Door", "Used to enter or leave");
+var lockedDoor = new Space("Door", true, 500, false, false, "Closed Door", "Not used to enter or leave");
+var openedDoor = new Space("Door", false, 500, true, true, "Open Door", "Were you raised in a barn");
+var closedSteelDoor = new Space("Steel Door", false, 1000, false, false, "Closed Steel Door", "Used to enter or leave");
+var lockedSteelDoor = new Space("Steel Door", false, 1000, false, false, "Closed Steel Door", "Not used to enter or leave");
+var openedSteelDoor = new Space("Steel Door", false, 1000, true, true, "Open Steel Door", "Were you raised in a barn");
+var stairs = new Space("Stairs", false, 1000, true, true, "Stairs", "How to move between floors");
+var empty = new Space("Empty Space", false, 1, true, true, "Empty", "Empty space, existential nothingness");
+var chest = new Space("Chest", true, 250, false, true, "Chest", "Were treasure is hidden");
+var library = new Space("Library", true, 100, false, false, "Library", "Were knowledge is hidden");
+var grass = new Space("Grass", false, 500, true, true, "Grass", "The type people mow, not smoke");
+var road = new Space("Road", false, 500, true, true, "Road", "A path for cars");
+var tree = new Space("Tree", true, 1000, true, false, "Tree", "Nature's skyscrapers");
+var water = new Space("Water", false, 4000, false, true, "Water", "What people swim in");
+var rubble = new Space("Rubble", false, 4000, true, true, "Rubble", "What used to be a building");
+var fence = new Space("Fence", true, 500, false, true, "Fence", "How to keep people off your lawn");
+
+function draw(Descriptor, Direction) {
+	if (Descriptor === "Wall") {
+		
+	}
+	else if (Descriptor === "Floor") {
+		
+	}
+	else if (Descriptor === "Window") {
+		
+	}
+	else if (Descriptor === "Barrier") {
+		
+	}
+	else if (Descriptor === "Closed Door") {
+		
+	}
+	else if (Descriptor === "Open Door") {
+		
+	}
+	else if (Descriptor === "Closed Steel Door") {
+		
+	}
+	else if (Descriptor === "Open Steel Door") {
+		
+	}
+	else if (Descriptor === "Stairs") {
+		
+	}
+	else if (Descriptor === "Empty") {
+		
+	}
+	else if (Descriptor === "Chest") {
+		
+	}
+	else if (Descriptor === "Library") {
+		
+	}
+	else if (Descriptor === "Grass") {
+		
+	}
+	else if (Descriptor === "Road") {
+		
+	}
+	else if (Descriptor === "Tree") {
+		
+	}
+	else if (Descriptor === "Water") {
+		
+	}
+	else if (Descriptor === "Rubble") {
+		
+	}
+	else if (Descriptor === "Fence") {
+		
+	}
+	else {
+		//Error, fill square with pink
+	}
+}
 
 //Defines the board
 function showCoords(event) {
