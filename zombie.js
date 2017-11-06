@@ -30,6 +30,7 @@ function rectangle(x1, y1, width, height) {
 }
 //Define variables
 var canvasSize = document.getElementById("canvasSize").value;
+var playerList = [];
 
 //Create a list of names
 var names = {
@@ -133,7 +134,7 @@ function Human(Name, Gender, Avatar, Team, Level, Class, X, Y, Z) {
   this.gender = Gender; //Gender identity, male female (or transgender in future?), string
   this.avatar = Avatar; //Main character or not, boolean
   this.team = Team; //Which side they are on, string
-  this.class = Class; //Describes what the human is specialized in, string
+  this.class = Class; //Describes what the human is specialized in (Soldier, Hunter, Engineer, Doctor), string
   this.level = Level; //How powerfull the human is, integer
   this.experience = 0;
   this.weapon = "na";
@@ -151,6 +152,7 @@ function Human(Name, Gender, Avatar, Team, Level, Class, X, Y, Z) {
   this.location.x = X; //Board location x axis, integer
   this.location.y = Y; //Board location y axis, integer
   this.location.z = Z; //Board location z axis, integer
+  playerList.push(this);
 }
 
 //Defines the Item object
@@ -168,22 +170,47 @@ function Item(Name, Type, PowerModifier, Description, X, Y, Z) {
 function Zombie(Type, Level, X, Y, Z) {
   this.type = Type;
   this.level = Level;
+  this.maxHealth = 100;
   this.location.x = X; //Board location x axis, integer
   this.location.y = Y; //Board location y axis, integer
   this.location.z = Z; //Board location z axis, integer
 }
 
 //Define the types of spaces
-function Space(Type, Breakable, Passable, Description, Color, X, Y, Z) {
-  this.type = Type;
-  this.breakable = Breakable;
+function Space(Name, Breakable, MaxHealth, Passable, Transparent, Color, Description) {
+  this.name = Name;
+  this.breakable = Breakable
+  this.maxHealth = MaxHealth;
   this.passable = Passable;
-  this.description = Description;
+  this.transparent = Transparent;
   this.color = Color;
-  this.location.x = X; //Board location x axis, integer
-  this.location.y = Y; //Board location y axis, integer
-  this.location.z = Z; //Board location z axis, integer
+  this.description = Description;
 }
+
+//Define different spaces
+var wall = new Space("Wall", true, 1000, false, false, "#888888", "A wall that seperates inside from outside, tough to break");
+var weakWall = new Space("Weak Wall", true, 100, false, false, "#888888", "A wall that seperates inside from outside, easy to break");
+var toughWall = new Space("Tough Wall", false, 1000, false, false, "#888888", "A wall that seperates inside from outside, impossible to break");
+var floor = new Space("Floor", false, 1000, true, true, "#d5a65d", "A place to walk on, indoors unless walls get broken");
+var weakFloor = new Space("Weak Floor", true, 100, true, true, "#d5a65d", "A place to walk on, until it gets broken");
+var window = new Space("Window", true, 100, false, true, "clear", "Something people look out of");
+var toughWindow = new Space("Bullet Proof Window", false, 1000, false, true, "clear", "Something banktellers look out of");
+var barrier = new Space("Barrier", true, 500, false, true, "#f0ff00", "What people build to keep zombies out");
+var closedDoor = new Space("Door", true, 500, false, false, "#ff0000", "Used to enter or leave");
+var lockedDoor = new Space("Door", true, 500, false, false, "#ff0000", "Not used to enter or leave");
+var openedDoor = new Space("Door", false, 500, true, true, "clear", "Were you raised in a barn");
+var closedSteelDoor = new Space("Steel Door", false, 1000, false, false, "#4f4f4f", "Used to enter or leave");
+var lockedSteelDoor = new Space("Steel Door", false, 1000, false, false, "#4f4f4f", "Not used to enter or leave");
+var openedSteelDoor = new Space("Steel Door", false, 1000, true, true, "clear", "Were you raised in a barn");
+var stairs = 0;
+var empty = new Space("Empty Space", false, 1, true, true, "#000000", "Empty space, existential nothingness");
+var chest = new Space("Chest", true, 250, false, true, "#ff00ff", "Were treasure is hidden");
+var library = new Space("Library", true, 100, false, false, "#ffff00", "Were knowledge is hidden");
+var grass = new Space("Grass", false, 500, true, true, "#00ff00", "The type people mow, not smoke");
+var road = new Space("Road", false, 500, true, true, "#383838", "A path for cars");
+var tree = new Space("Tree", true, 1000, true, false, "#006000", "Nature's skyscrapers");
+var water = new Space("Water", false, 4000, false, true, "#0f00ff", "What people swim in");
+var rubble = new Space("Rubble", false, 4000, true, true, "#b4b4b4", "What used to be a building");
 
 //Defines the board
 function showCoords(event) {
