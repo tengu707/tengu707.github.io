@@ -181,7 +181,7 @@ function Space(Name, Breakable, MaxHealth, Passable, Transparent, Color, Flavor)
   this.maxHealth = MaxHealth;
   this.passable = Passable;
   this.transparent = Transparent;
-  this.color = Color;
+  this.hexColor = Color;
   this.flavor = Flavor;
 }
 
