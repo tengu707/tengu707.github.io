@@ -177,13 +177,13 @@ Board.prototype.record = function(X, Y) {
                 turn0.peice[i] = 'white';
             }
         }
-	for (var j = 0; j < white.x.length; j++) {
-            if (turn0.x[i] === white.x[j] && turn0.y[i] === white.y[j]) {
+	for (var j = 0; j < green.x.length; j++) {
+            if (turn0.x[i] === green.x[j] && turn0.y[i] === green.y[j]) {
                 turn0.peice[i] = 'green';
             }
         }
-	for (var j = 0; j < white.x.length; j++) {
-            if (turn0.x[i] === white.x[j] && turn0.y[i] === white.y[j]) {
+	for (var j = 0; j < blue.x.length; j++) {
+            if (turn0.x[i] === blue.x[j] && turn0.y[i] === blue.y[j]) {
                 turn0.peice[i] = 'blue';
             }
         }
@@ -195,6 +195,7 @@ Board.prototype.record = function(X, Y) {
 
 //takes old moves and returns them up the turn objects
 Board.prototype.undo = function() {
+    document.getElementById("remove").play(); 
     for (var i = 0; i < turn0.x.length; i++) {
         turn0.peice[i] = turn1.peice[i];
     }
@@ -286,7 +287,6 @@ Player.prototype.remove = function (X, Y) {
             if (button === 1) {
                 this.x.splice(i,1);
                 this.y.splice(i,1);
-                document.getElementById("remove").play(); 
             }
             remove ++;
         }
