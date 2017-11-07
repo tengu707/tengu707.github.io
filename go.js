@@ -169,17 +169,17 @@ Board.prototype.record = function(X, Y) {
     for (var i = 0; i < turn0.x.length; i++) {
         for (var j = 0; j < black.x.length; j++) {
             if (turn0.x[i] === black.x[j] && turn0.y[i] === black.y[j]) {
-                turn0.peice[i] = 'black';
+                turn0.peice[i] = 'b';
             }
         }
         for (var j = 0; j < white.x.length; j++) {
             if (turn0.x[i] === white.x[j] && turn0.y[i] === white.y[j]) {
-                turn0.peice[i] = 'white';
+                turn0.peice[i] = 'w';
             }
         }
 	for (var j = 0; j < green.x.length; j++) {
             if (turn0.x[i] === green.x[j] && turn0.y[i] === green.y[j]) {
-                turn0.peice[i] = 'green';
+                turn0.peice[i] = 'g';
             }
         }
 	for (var j = 0; j < blue.x.length; j++) {
@@ -187,7 +187,7 @@ Board.prototype.record = function(X, Y) {
                 turn0.peice[i] = 'blue';
             }
         }
-        if (turn0.peice[i] !== 'black' && turn0.peice[i] !=='white' && turn0.peice[i] !=='green' && turn0.peice[i] !=='blue') {
+        if (turn0.peice[i] !== 'b' && turn0.peice[i] !=='w' && turn0.peice[i] !=='g' && turn0.peice[i] !=='blue') {
             turn0.peice[i] = 'empty';
         }
     }
