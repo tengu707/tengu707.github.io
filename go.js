@@ -134,6 +134,8 @@ var Player = function(color1, color2) {
 
 var black = new Player("#000000", "#ffffff");
 var white = new Player("#ffffff", "#000000");
+var green = new Player("#00ff00", "#000000");
+var blue  = new Player("#ff0000", "#000000");
 
 //functions for board objects
 
@@ -167,16 +169,26 @@ Board.prototype.record = function(X, Y) {
     for (var i = 0; i < turn0.x.length; i++) {
         for (var j = 0; j < black.x.length; j++) {
             if (turn0.x[i] === black.x[j] && turn0.y[i] === black.y[j]) {
-                turn0.peice[i] = 'b';
+                turn0.peice[i] = 'black';
             }
         }
         for (var j = 0; j < white.x.length; j++) {
             if (turn0.x[i] === white.x[j] && turn0.y[i] === white.y[j]) {
-                turn0.peice[i] = 'w';
+                turn0.peice[i] = 'white';
             }
         }
-        if (turn0.peice[i] !== 'b' && turn0.peice[i] !=='w') {
-            turn0.peice[i] = 'e';
+	for (var j = 0; j < white.x.length; j++) {
+            if (turn0.x[i] === white.x[j] && turn0.y[i] === white.y[j]) {
+                turn0.peice[i] = 'green';
+            }
+        }
+	for (var j = 0; j < white.x.length; j++) {
+            if (turn0.x[i] === white.x[j] && turn0.y[i] === white.y[j]) {
+                turn0.peice[i] = 'blue';
+            }
+        }
+        if (turn0.peice[i] !== 'black' && turn0.peice[i] !=='white' && turn0.peice[i] !=='green' && turn0.peice[i] !=='blue') {
+            turn0.peice[i] = 'empty';
         }
     }
 }
@@ -215,14 +227,26 @@ Board.prototype.recall = function() {
     black.y = [];
     white.x = [];
     white.y = [];
+    green.x = [];
+    green.y = [];
+    blue.x = [];
+    blue.y = [];
     for (var i = 0; i < this.x.length; i++) {
-        if (this.peice[i] === 'b') {
+        if (this.peice[i] === 'black') {
             black.x.push(this.x[i]);
             black.y.push(this.y[i]);
         }
-        else if (this.peice[i] === 'w') {
+        else if (this.peice[i] === 'white') {
             white.x.push(this.x[i]);
             white.y.push(this.y[i]);
+        }
+	else if (this.peice[i] === 'green') {
+            green.x.push(this.x[i]);
+            green.y.push(this.y[i]);
+        }
+	else if (this.peice[i] === 'blue') {
+            blue.x.push(this.x[i]);
+            blue.y.push(this.y[i]);
         }
     }
 }
@@ -262,7 +286,7 @@ Player.prototype.remove = function (X, Y) {
             if (button === 1) {
                 this.x.splice(i,1);
                 this.y.splice(i,1);
-                //playSound(getSound("rpg/step-heavy"));
+                document.getElementById("remove").play(); 
             }
             remove ++;
         }
@@ -315,7 +339,7 @@ Player.prototype.findGroups = function () {
 Player.prototype.addPeice = function(X, Y) {
     this.x.push(X);
     this.y.push(Y);
-    //playSound(getSound("rpg/hit-clop"));
+    document.getElementById("place").play();
     add = 1;
     turn0.record();
     turnStart = 0;
@@ -341,7 +365,7 @@ Player.prototype.removeGroup = function (group) {
         }
     }
 }
-
+//Continue from here
 // function for detecting captured group
 Player.prototype.detectCaptures = function(X, Y) {
     if (turn === 1) {
