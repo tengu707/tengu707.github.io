@@ -365,7 +365,7 @@ Player.prototype.removeGroup = function (group) {
         }
     }
 }
-//Continue from here
+
 // function for detecting captured group
 Player.prototype.detectCaptures = function(X, Y) {
     if (turn === 1) {
@@ -373,10 +373,20 @@ Player.prototype.detectCaptures = function(X, Y) {
         black.y.push(Y);
         black.findGroups();
     }
-    else {
+    else  if (turn === 2) {
         white.x.push(X);
         white.y.push(Y);
         white.findGroups();
+    }
+    else if (turn === 3) {
+	green.x.push(X);
+        green.y.push(Y);
+        green.findGroups();
+    }
+    else if (turn === 4) {
+	blue.x.push(X);
+        blue.y.push(Y);
+        blue.findGroups();
     }
     capture = 0;
     for (var i = 0; i < this.groupIndex.length; i++) {
@@ -391,6 +401,16 @@ Player.prototype.detectCaptures = function(X, Y) {
                 }
                 for (var k = 0; k < white.x.length; k++) {
                     if (dist(1, this.x[j], this.y[j], white.x[k], white.y[k])) {
+                        freedom --;
+                    }
+                }
+		for (var k = 0; k < green.x.length; k++) {
+                    if (dist(1, this.x[j], this.y[j], green.x[k], green.y[k])) {
+                        freedom --;
+                    }
+                }
+		for (var k = 0; k < blue.x.length; k++) {
+                    if (dist(1, this.x[j], this.y[j], blue.x[k], blue.y[k])) {
                         freedom --;
                     }
                 }
@@ -412,13 +432,24 @@ Player.prototype.detectCaptures = function(X, Y) {
         black.y.splice(black.y.length-1, 1);
         black.findGroups();
     }
-    else {
+    else if (turn === 2) {
         white.x.splice(white.x.length-1, 1);
         white.y.splice(white.y.length-1, 1);
         white.findGroups();
     }
+    else if (turn === 3) {
+        green.x.splice(green.x.length-1, 1);
+        green.y.splice(green.y.length-1, 1);
+        green.findGroups();
+    }
+    else if (turn === 4) {
+        blue.x.splice(blue.x.length-1, 1);
+        blue.y.splice(blue.y.length-1, 1);
+        blue.findGroups();
+    }
 }
 
+//continue from here
 //check for duplicates
 Player.prototype.duplicate = function(X, Y) {
     duplicate = 1;
