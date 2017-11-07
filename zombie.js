@@ -211,36 +211,75 @@ var water = new Space("Water", false, 4000, false, true, "Water", "What people s
 var rubble = new Space("Rubble", false, 4000, true, true, "Rubble", "What used to be a building");
 var fence = new Space("Fence", true, 500, false, true, "Fence", "How to keep people off your lawn");
 
-function draw(Descriptor, Direction) {
+function draw(Descriptor, Direction, X, Y, Width) {
 	if (Descriptor === "Wall") {
-		
+		fill = "#888888";
+		ctx.strokeStyle = fill;
+		rectangle(X, Y, Width, Width);
 	}
 	else if (Descriptor === "Floor") {
-		
+		fill = "#d68910";
+		ctx.strokeStyle = fill;
+		rectangle(X, Y, Width, Width);
+		ctx.strokeStyle = "#784212";
+		for (var i = 0; i < 5; i++) {
+			line(X + (i * Width / 5), Y, X + (i * Width / 5), Y + Width);
+		}
 	}
 	else if (Descriptor === "Window") {
-		
+		var grd = ctx.createLinearGradient(X, Y, Width + X, Width + Y);
+		grd.addColorStop(0, "White");
+		for (var i = 1; i < 4; i++) {
+  			grd.addColorStop(i * 0.25 - 0.05, "#ffffff");
+  			grd.addColorStop(i * 0.25, "#00FFFF");
+  			grd.addColorStop(i * 0.25 + 0.05, "#ffffff");
+		}
+		grd.addColorStop(1, "White");
+		ctx.fillStyle = grd;
+		ctx.fillRect(X, Y, Width, Width);
 	}
 	else if (Descriptor === "Barrier") {
 		
 	}
 	else if (Descriptor === "Closed Door") {
-		
+		fill = "#d68910";
+		ctx.strokeStyle = fill;
+		rectangle(X, Y, Width, Width);
+		fill = "#784212";
+		ctx.strokeStyle = "#000000";
+		rectangle(X, Y, Width, Width * 0.2);
 	}
 	else if (Descriptor === "Open Door") {
-		
+		fill = "#d68910";
+		ctx.strokeStyle = fill;
+		rectangle(X, Y, Width, Width);
+		fill = "#784212";
+		ctx.strokeStyle = "#000000";
+		rectangle(X, Y, Width * 0.2, Width);
 	}
 	else if (Descriptor === "Closed Steel Door") {
-		
+		fill = "#d68910";
+		ctx.strokeStyle = fill;
+		rectangle(X, Y, Width, Width);
+		fill = "#888888";
+		ctx.strokeStyle = "#000000";
+		rectangle(X, Y, Width, Width * 0.2);
 	}
 	else if (Descriptor === "Open Steel Door") {
-		
+		fill = "#d68910";
+		ctx.strokeStyle = fill;
+		rectangle(X, Y, Width, Width);
+		fill = "#888888";
+		ctx.strokeStyle = "#000000";
+		rectangle(X, Y, Width * 0.2, Width);
 	}
 	else if (Descriptor === "Stairs") {
 		
 	}
 	else if (Descriptor === "Empty") {
-		
+		fill = "#000000";
+		ctx.strokeStyle = fill;
+		rectangle(X, Y, Width, Width);
 	}
 	else if (Descriptor === "Chest") {
 		
@@ -249,10 +288,14 @@ function draw(Descriptor, Direction) {
 		
 	}
 	else if (Descriptor === "Grass") {
-		
+		fill = "#00ff00";
+		ctx.strokeStyle = fill;
+		rectangle(X, Y, Width, Width);
 	}
 	else if (Descriptor === "Road") {
-		
+		fill = "#483200";
+		ctx.strokeStyle = fill;
+		rectangle(X, Y, Width, Width);
 	}
 	else if (Descriptor === "Tree") {
 		
