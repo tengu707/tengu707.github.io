@@ -123,19 +123,21 @@ var turn8 = new Board();
 
 //player object definition
 
-var Player = function(color1, color2) {
+var Player = function(color1, color2, boardName) {
     this.color1 = color1;
     this.color2 = color2;
     this.x = [];
     this.y = [];
     this.group = [];
     this.groupIndex = [];
+    this.storage = [];
+    this.boardName = boardName;
 }
 
-var black = new Player("#000000", "#ffffff");
-var white = new Player("#ffffff", "#000000");
-var green = new Player("#00ff00", "#000000");
-var blue  = new Player("#ff0000", "#000000");
+var black = new Player("#000000", "#ffffff", "b");
+var white = new Player("#ffffff", "#000000", "w");
+var green = new Player("#00ff00", "#000000", "g");
+var blue  = new Player("#ff0000", "#000000", "u");
 
 //functions for board objects
 
@@ -184,10 +186,10 @@ Board.prototype.record = function(X, Y) {
         }
 	for (var j = 0; j < blue.x.length; j++) {
             if (turn0.x[i] === blue.x[j] && turn0.y[i] === blue.y[j]) {
-                turn0.peice[i] = 'blue';
+                turn0.peice[i] = 'u';
             }
         }
-        if (turn0.peice[i] !== 'b' && turn0.peice[i] !=='w' && turn0.peice[i] !=='g' && turn0.peice[i] !=='blue') {
+        if (turn0.peice[i] !== 'b' && turn0.peice[i] !=='w' && turn0.peice[i] !=='g' && turn0.peice[i] !=='u') {
             turn0.peice[i] = 'empty';
         }
     }
@@ -233,19 +235,19 @@ Board.prototype.recall = function() {
     blue.x = [];
     blue.y = [];
     for (var i = 0; i < this.x.length; i++) {
-        if (this.peice[i] === 'black') {
+        if (this.peice[i] === 'b') {
             black.x.push(this.x[i]);
             black.y.push(this.y[i]);
         }
-        else if (this.peice[i] === 'white') {
+        else if (this.peice[i] === 'w') {
             white.x.push(this.x[i]);
             white.y.push(this.y[i]);
         }
-	else if (this.peice[i] === 'green') {
+	else if (this.peice[i] === 'g') {
             green.x.push(this.x[i]);
             green.y.push(this.y[i]);
         }
-	else if (this.peice[i] === 'blue') {
+	else if (this.peice[i] === 'u') {
             blue.x.push(this.x[i]);
             blue.y.push(this.y[i]);
         }
@@ -449,43 +451,64 @@ Player.prototype.detectCaptures = function(X, Y) {
     }
 }
 
-//continue from here
+//Preduplicate function
+Player.prototype.preDuplicate = function(X, Y) {
+	this.detectCaptures(X, Y);
+	for (var i = 0; i < this.group.length; i++) {
+            if (this.group[i] === capturedGroups[0]) {
+                for (var j = 0; j < turn0.x.length; j++) {
+                    if (this.x[i] === turn0.x[j] && this.y[i] === turn0.y[j]) {
+                        turn0.peice[j] = 'e';
+                        this.storage.push(j);
+                    }
+                }
+            }
+        }
+}
+
+//Post duplicate function
+Player.prototype.postDuplicate = function() {
+	for (var i = 0; i < this.storage.length; i++) {
+            turn0.peice[this.storage[i]] = this.boardName;
+        }
+	this.storage = [];
+}
 //check for duplicates
 Player.prototype.duplicate = function(X, Y) {
     duplicate = 1;
     if (turn === 1) {
-        white.detectCaptures(X, Y);
-        for (var i = 0; i < white.group.length; i++) {
-            if (white.group[i] === capturedGroups[0]) {
-                for (var j = 0; j < turn0.x.length; j++) {
-                    if (white.x[i] === turn0.x[j] && white.y[i] === turn0.y[j]) {
-                        turn0.peice[j] = 'e';
-                        storage.push(j);
-                    }
-                }
-            }
-        }
+        white.preDuplicate(X, Y);
+	green.preDuplicate(X, Y);
+	blue.preDuplicate(X, Y);
     }
-    else {
-        black.detectCaptures(X, Y);
-        for (var i = 0; i < black.group.length; i++) {
-            if (black.group[i] === capturedGroups[0]) {
-                for (var j = 0; j < turn0.x.length; j++) {
-                    if (black.x[i] === turn0.x[j] && black.y[i] === turn0.y[j]) {
-                        turn0.peice[j] = 'e';
-                        storage.push(j);
-                    }
-                }
-            }
-        }
+    else if (turn === 2) {
+	black.preDuplicate(X, Y);
+	green.preDuplicate(X, Y);
+	blue.preDuplicate(X, Y);
+    }
+    else if (turn === 3) {
+	black.preDuplicate(X, Y);
+	white.preDuplicate(X, Y);
+	blue.preDuplicate(X, Y);
+    }
+    else if (turn === 4) {
+	black.preDuplicate(X, Y);
+	white.preDuplicate(X, Y);
+	green.preDuplicate(X, Y);
     }
     for (var i = 0; i < turn0.x.length; i++) {
         if (turn0.x[i] === X && turn0.y[i] === Y) {
             if (turn === 1) {
                 turn0.peice[i] = 'b';
             }
-            else {
+            else if (turn === 2) {
                 turn0.peice[i] = 'w';
+            }
+	    else if (turn === 3) {
+                turn0.peice[i] = 'g';
+            }
+	    else if (turn === 4) {
+                turn0.peice[i] = 'u';
             }
             for (var j = 0; j < turn0.x.length; j++) {
                 if (turn0.peice[j] !== turn1.peice[j]) {
@@ -496,16 +519,26 @@ Player.prototype.duplicate = function(X, Y) {
         }
     }
     if (turn === 1) {
-        for (var i = 0; i < storage.length; i++) {
-            turn0.peice[storage[i]] = 'w';
-        }
+        white.postDuplicate();
+	green.postDuplicate();
+	blue.postDuplicate();
     }
-    else {
-        for (var i = 0; i < storage.length; i++) {
-            turn0.peice[storage[i]] = 'b';
-        }
+    if (turn === 2) {
+	black.postDuplicate();
+        green.postDuplicate();
+	blue.postDuplicate();
     }
-    storage = [];
+    if (turn === 3) {
+        black.postDuplicate();
+	white.postDuplicate();
+	blue.postDuplicate();
+    }
+    
+    else if (turn === 4) {
+        black.postDuplicate();
+	white.postDuplicate();
+	blue.postDuplicate();
+    }
 }
 
 //A function that draws the background
@@ -541,13 +574,59 @@ Player.prototype.turn = function(X, Y) {
                 for (var u = 0; u < capturedGroups.length; u++) {
                     white.removeGroup(capturedGroups[u]);
                 }
+		green.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    green.removeGroup(capturedGroups[u]);
+                }
+		blue.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    blue.removeGroup(capturedGroups[u]);
+                }
             }
-            else {
+            else if (turn === 2) {
                 black.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     black.removeGroup(capturedGroups[u]);
                 }
+		green.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    green.removeGroup(capturedGroups[u]);
+                }
+		blue.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    blue.removeGroup(capturedGroups[u]);
+                }
+		
             }
+	    else if (turn === 3) {
+                black.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    black.removeGroup(capturedGroups[u]);
+                }
+		white.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    white.removeGroup(capturedGroups[u]);
+                }
+		blue.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    blue.removeGroup(capturedGroups[u]);
+                }
+            }
+	    else if (turn === 4) {
+                black.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    black.removeGroup(capturedGroups[u]);
+                }
+		white.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    white.removeGroup(capturedGroups[u]);
+                }
+		green.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    green.removeGroup(capturedGroups[u]);
+                }
+            }
+	
             if (capture === 1) {
                     this.addPeice(X, Y);
             }
@@ -558,17 +637,64 @@ Player.prototype.turn = function(X, Y) {
                 for (var u = 0; u < capturedGroups.length; u++) {
                     white.removeGroup(capturedGroups[u]);
                 }
+		green.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    green.removeGroup(capturedGroups[u]);
+                }
+		blue.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    blue.removeGroup(capturedGroups[u]);
+                }
             }
-            else {
+            else if (turn === 2) {
                 black.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     black.removeGroup(capturedGroups[u]);
+                }
+		green.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    green.removeGroup(capturedGroups[u]);
+                }
+		blue.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    blue.removeGroup(capturedGroups[u]);
+                }
+		
+            }
+	    else if (turn === 3) {
+                black.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    black.removeGroup(capturedGroups[u]);
+                }
+		white.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    white.removeGroup(capturedGroups[u]);
+                }
+		blue.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    blue.removeGroup(capturedGroups[u]);
+                }
+            }
+	    else if (turn === 4) {
+                black.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    black.removeGroup(capturedGroups[u]);
+                }
+		white.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    white.removeGroup(capturedGroups[u]);
+                }
+		green.detectCaptures(X, Y);
+                for (var u = 0; u < capturedGroups.length; u++) {
+                    green.removeGroup(capturedGroups[u]);
                 }
             }
             this.addPeice(X, Y);
         }
         black.findGroups();
         white.findGroups();
+	green.findGroups();
+	blue.findGroups();
         capturedGroups = [];
         duplicate = 0;
     }
@@ -625,11 +751,15 @@ function drawBoard() {
     if (groupLines === 1) {
         black.groupLine();
         white.groupLine();
+	green.groupLine();
+        blue.groupLine();
     }
     
     //draw the peices
     black.drawPeice();
     white.drawPeice();
+    green.drawPeice();
+    blue.drawPeice();
     
     //Turn indicator
     ctx.font = "20px Ariel";
@@ -656,6 +786,8 @@ function showCoords(event) {
     mouseGridY = Math.round((mouseY-gridY)/gridSize*gridNum);
     black.remove(mouseGridX, mouseGridY);
     white.remove(mouseGridX, mouseGridY);
+    green.remove(mouseGridX, mouseGridY);
+    blue.remove(mouseGridX, mouseGridY);
     if (remove===0 && mouseGridX>-1 && mouseGridX<boardSize && mouseGridY>-1 && mouseGridY<boardSize) {
         if (button === 2) {
             black.addPeice(mouseGridX, mouseGridY);
@@ -677,6 +809,8 @@ function showCoords(event) {
 
     black.findGroups();
     white.findGroups();
+    green.findGroups();
+    blue.findGroups();
     remove=0;
     groupped=0;
     add = 0;
@@ -712,8 +846,10 @@ function start() {
     turn6 = new Board();
     turn7 = new Board();
     turn8 = new Board();
-    black = new Player("#000000", "#ffffff");
-	white = new Player("#ffffff", "#000000");
+    black = new Player("#000000", "#ffffff", "b");
+    white = new Player("#ffffff", "#000000", "w");
+    green = new Player("#00ff00", "#000000", "g");
+    blue  = new Player("#ff0000", "#000000", "u");
     button = 0;
     background();
     drawBoard();
