@@ -770,8 +770,10 @@ function drawBoard() {
     ctx.stroke();
     ctx.lineWidth = 0.75;
     ctx.fillStyle = "#000000";
-    if (turn===1) { ctx.fillText("TURN: Black", 20, 35);}
-    else if (turn===-1) { ctx.fillText("TURN: White", 20, 35);}
+    if (turn === 1) { ctx.fillText("TURN: Black", 20, 35);}
+    else if (turn === 2) { ctx.fillText("TURN: White", 20, 35);}
+    else if (turn === 3) { ctx.fillText("TURN: Green", 20, 35);}
+    else if (turn === 4) { ctx.fillText("TURN: Blue", 20, 35);}
     else {ctx.fillText("TURN:", 20, 35);}
 }
 
@@ -792,15 +794,39 @@ function showCoords(event) {
         if (button === 2) {
             black.addPeice(mouseGridX, mouseGridY);
         }
+	else if (button === 3) {
+	    white.addPeice(mouseGridX, mouseGridY);
+	}
+	else if (button === 4) {
+	    green.addPeice(mouseGridX, mouseGridY);
+	}
+	else if (button === 5) {
+	    blue.addPeice(mouseGridX, mouseGridY);
+	}
         else {
-            if (turn===1) {
+            if (turn === 1) {
                 black.turn(mouseGridX, mouseGridY);
             }
-            else if (turn===-1) {
+            else if (turn === 2) {
                 white.turn(mouseGridX, mouseGridY);
             }
+	    else if (turn === 3) {
+                green.turn(mouseGridX, mouseGridY);
+            }
+	    else if (turn === 4) {
+                blue.turn(mouseGridX, mouseGridY);
+            }
             if (turn !== 0 && add === 1) {
-                turn*=-1;
+                turn++;
+		if (turn === 3 && numOfPlayers === 2) {
+			turn = 1;
+		}
+		else if (turn === 4 && numOfPlayers === 3) {
+			turn = 1;
+		}
+		else if (turn === 5 && numOfPlayers === 4) {
+			turn = 1;
+		}
                 skipCount=0;
             }
         
