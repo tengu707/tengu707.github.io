@@ -1,4 +1,4 @@
-//v 2.0
+//v 3.0
 
 //Drawing variables
 
@@ -63,7 +63,6 @@ var duplicate = 0;
 var storeX = 0;
 var storeY = 0;
 var store = 0;
-var storage = [];
 var turnStart = 1;
 var undos = 8;
 var minus = 3;
@@ -137,7 +136,7 @@ var Player = function(color1, color2, boardName) {
 var black = new Player("#000000", "#ffffff", "b");
 var white = new Player("#ffffff", "#000000", "w");
 var green = new Player("#00ff00", "#000000", "g");
-var blue  = new Player("#ff0000", "#000000", "u");
+var blue  = new Player("#0000ff", "#000000", "u");
 
 //functions for board objects
 
@@ -569,16 +568,19 @@ Player.prototype.turn = function(X, Y) {
         this.detectCaptures(X, Y);
         capturedGroups = [];
         if (capture === 1) {
+        	capture = 0;
             if (turn === 1) {
                 white.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     white.removeGroup(capturedGroups[u]);
                 }
-		green.detectCaptures(X, Y);
+                capturedGroups = [];
+				green.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     green.removeGroup(capturedGroups[u]);
                 }
-		blue.detectCaptures(X, Y);
+                capturedGroups = [];
+				blue.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     blue.removeGroup(capturedGroups[u]);
                 }
@@ -588,45 +590,50 @@ Player.prototype.turn = function(X, Y) {
                 for (var u = 0; u < capturedGroups.length; u++) {
                     black.removeGroup(capturedGroups[u]);
                 }
-		green.detectCaptures(X, Y);
+                capturedGroups = [];
+				green.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     green.removeGroup(capturedGroups[u]);
                 }
-		blue.detectCaptures(X, Y);
+                capturedGroups = [];
+				blue.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     blue.removeGroup(capturedGroups[u]);
                 }
 		
             }
-	    else if (turn === 3) {
+	    	else if (turn === 3) {
                 black.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     black.removeGroup(capturedGroups[u]);
                 }
-		white.detectCaptures(X, Y);
+                capturedGroups = [];
+				white.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     white.removeGroup(capturedGroups[u]);
                 }
-		blue.detectCaptures(X, Y);
+                capturedGroups = [];
+				blue.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     blue.removeGroup(capturedGroups[u]);
                 }
             }
-	    else if (turn === 4) {
+	    	else if (turn === 4) {
                 black.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     black.removeGroup(capturedGroups[u]);
                 }
-		white.detectCaptures(X, Y);
+                capturedGroups = [];
+				white.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     white.removeGroup(capturedGroups[u]);
                 }
-		green.detectCaptures(X, Y);
+                capturedGroups = [];
+				green.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     green.removeGroup(capturedGroups[u]);
                 }
             }
-	
             if (capture === 1) {
                     this.addPeice(X, Y);
             }
@@ -637,11 +644,13 @@ Player.prototype.turn = function(X, Y) {
                 for (var u = 0; u < capturedGroups.length; u++) {
                     white.removeGroup(capturedGroups[u]);
                 }
-		green.detectCaptures(X, Y);
+                capturedGroups = [];
+				green.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     green.removeGroup(capturedGroups[u]);
                 }
-		blue.detectCaptures(X, Y);
+                capturedGroups = [];
+				blue.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     blue.removeGroup(capturedGroups[u]);
                 }
@@ -651,11 +660,13 @@ Player.prototype.turn = function(X, Y) {
                 for (var u = 0; u < capturedGroups.length; u++) {
                     black.removeGroup(capturedGroups[u]);
                 }
-		green.detectCaptures(X, Y);
+                capturedGroups = [];
+				green.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     green.removeGroup(capturedGroups[u]);
                 }
-		blue.detectCaptures(X, Y);
+                capturedGroups = [];
+				blue.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     blue.removeGroup(capturedGroups[u]);
                 }
@@ -666,11 +677,13 @@ Player.prototype.turn = function(X, Y) {
                 for (var u = 0; u < capturedGroups.length; u++) {
                     black.removeGroup(capturedGroups[u]);
                 }
-		white.detectCaptures(X, Y);
+                capturedGroups = [];
+				white.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     white.removeGroup(capturedGroups[u]);
                 }
-		blue.detectCaptures(X, Y);
+                capturedGroups = [];
+				blue.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     blue.removeGroup(capturedGroups[u]);
                 }
@@ -680,11 +693,13 @@ Player.prototype.turn = function(X, Y) {
                 for (var u = 0; u < capturedGroups.length; u++) {
                     black.removeGroup(capturedGroups[u]);
                 }
-		white.detectCaptures(X, Y);
+                capturedGroups = [];
+				white.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     white.removeGroup(capturedGroups[u]);
                 }
-		green.detectCaptures(X, Y);
+                capturedGroups = [];
+				green.detectCaptures(X, Y);
                 for (var u = 0; u < capturedGroups.length; u++) {
                     green.removeGroup(capturedGroups[u]);
                 }
@@ -693,8 +708,8 @@ Player.prototype.turn = function(X, Y) {
         }
         black.findGroups();
         white.findGroups();
-	green.findGroups();
-	blue.findGroups();
+		green.findGroups();
+		blue.findGroups();
         capturedGroups = [];
         duplicate = 0;
     }
@@ -751,7 +766,7 @@ function drawBoard() {
     if (groupLines === 1) {
         black.groupLine();
         white.groupLine();
-	green.groupLine();
+	    green.groupLine();
         blue.groupLine();
     }
     
@@ -794,15 +809,15 @@ function showCoords(event) {
         if (button === 2) {
             black.addPeice(mouseGridX, mouseGridY);
         }
-	else if (button === 3) {
-	    white.addPeice(mouseGridX, mouseGridY);
-	}
-	else if (button === 4) {
-	    green.addPeice(mouseGridX, mouseGridY);
-	}
-	else if (button === 5) {
-	    blue.addPeice(mouseGridX, mouseGridY);
-	}
+        else if (button === 3) {
+            white.addPeice(mouseGridX, mouseGridY);
+        }
+        else if (button === 4) {
+            green.addPeice(mouseGridX, mouseGridY);
+        }
+        else if (button === 5) {
+            blue.addPeice(mouseGridX, mouseGridY);
+        }
         else {
             if (turn === 1) {
                 black.turn(mouseGridX, mouseGridY);
@@ -810,23 +825,17 @@ function showCoords(event) {
             else if (turn === 2) {
                 white.turn(mouseGridX, mouseGridY);
             }
-	    else if (turn === 3) {
+            else if (turn === 3) {
                 green.turn(mouseGridX, mouseGridY);
             }
-	    else if (turn === 4) {
+            else if (turn === 4) {
                 blue.turn(mouseGridX, mouseGridY);
             }
             if (turn !== 0 && add === 1) {
                 turn++;
-		if (turn === 3 && numOfPlayers === 2) {
-			turn = 1;
-		}
-		else if (turn === 4 && numOfPlayers === 3) {
-			turn = 1;
-		}
-		else if (turn === 5 && numOfPlayers === 4) {
-			turn = 1;
-		}
+              if (turn > numOfPlayers) {
+                  turn = 1;
+              }
                 skipCount=0;
             }
         
@@ -850,13 +859,13 @@ function start() {
     document.getElementById("goboard").height = canvasSize;
     boardSize = document.getElementById("boardSize").value;
     if (document.getElementById("2players").checked) {
-    	numOfPlayers = document.getElementById("2players").value;
+    	numOfPlayers = Number(document.getElementById("2players").value);
     }
     else if (document.getElementById("3players").checked) {
-    	numOfPlayers = document.getElementById("3players").value;
+    	numOfPlayers = Number(document.getElementById("3players").value);
     }
     else if (document.getElementById("4players").checked) {
-    	numOfPlayers = document.getElementById("4players").value;
+    	numOfPlayers = Number(document.getElementById("4players").value);
     }
     gridNum = boardSize - 1;
 	gridSize = canvasSize - 100;
@@ -875,18 +884,18 @@ function start() {
     black = new Player("#000000", "#ffffff", "b");
     white = new Player("#ffffff", "#000000", "w");
     green = new Player("#00ff00", "#000000", "g");
-    blue  = new Player("#ff0000", "#000000", "u");
+    blue  = new Player("#0000ff", "#000000", "u");
     button = 0;
+    document.getElementById("skipbutton").innerHTML = "SKIP";
     background();
     drawBoard();
-      
 }
 
 //A function to skip turns
 function skip() {
     if (button === 0) {
-        if (skipCount<1) {
-            turn*=-1;
+        if (skipCount < numOfPlayers) {
+            turn++;
             skipCount++;
         }
         else {
@@ -914,7 +923,10 @@ function undo() {
     if (undos < 8) {
         turn0.undo();
         turn0.recall();
-        turn *=-1;
+        turn --;
+        if (turn < 1) {
+            turn = numOfPlayers;
+        }
         undos ++;
 	    drawBoard();
     }
