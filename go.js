@@ -912,7 +912,20 @@ function skip() {
         var whiteScore = white.x.length;
         var greenScore = green.x.length;
         var blueScore = blue.x.length;
-		document.getElementById("skipbutton").innerHTML = "Click here for score";
+	document.getElementById("skipbutton").innerHTML = "Click here for score";
+	var winString = "";
+	if (blackScore >= whiteScore && blackScore >= greenScore && blackScore >= blueScore) {
+		winString = winString + "Black wins!!!  ";
+	}
+	else if (whiteScore >= blackScore && whiteScore >= greenScore && whiteScore >= blueScore) {
+		winString = winString + "White wins!!!  ";
+	}
+	else if (greenScore >= whiteScore && greenScore >= blackScore && blackScore >= blueScore) {
+		winString = winString + "Green wins!!!  ";
+	}
+	else if (blueScore >= whiteScore && blueScore >= greenScore && blueScore >= blackScore) {
+		winString = winString + "Blue wins!!!";
+	}
         if (numOfPlayers === 2) {
 			var alertString = "Black:" + blackScore + "   White:" + whiteScore;
         }
@@ -922,6 +935,7 @@ function skip() {
         else if (numOfPlayers === 4) {
 			var alertString = "Black:" + blackScore + "   White:" + whiteScore + "   Green:" + greenScore + "   Blue:" + blueScore;
         }
+	    	alert(winString);
 		alert(alertString);
     }
     else if (button === 1) {
