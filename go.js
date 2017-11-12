@@ -380,16 +380,15 @@ Player.prototype.detectCaptures = function(X, Y) {
         white.findGroups();
     }
     else if (turn === 3) {
-	green.x.push(X);
+		green.x.push(X);
         green.y.push(Y);
         green.findGroups();
     }
     else if (turn === 4) {
-	blue.x.push(X);
+		blue.x.push(X);
         blue.y.push(Y);
         blue.findGroups();
     }
-    capture = 0;
     for (var i = 0; i < this.groupIndex.length; i++) {
         freedom = 0; 
         for (var j = 0; j < this.x.length; j++) {
@@ -405,12 +404,12 @@ Player.prototype.detectCaptures = function(X, Y) {
                         freedom --;
                     }
                 }
-		for (var k = 0; k < green.x.length; k++) {
+				for (var k = 0; k < green.x.length; k++) {
                     if (dist(1, this.x[j], this.y[j], green.x[k], green.y[k])) {
                         freedom --;
                     }
                 }
-		for (var k = 0; k < blue.x.length; k++) {
+				for (var k = 0; k < blue.x.length; k++) {
                     if (dist(1, this.x[j], this.y[j], blue.x[k], blue.y[k])) {
                         freedom --;
                     }
@@ -711,6 +710,7 @@ Player.prototype.turn = function(X, Y) {
 		green.findGroups();
 		blue.findGroups();
         capturedGroups = [];
+        capture = 0;
         duplicate = 0;
     }
 }
@@ -894,8 +894,11 @@ function start() {
 //A function to skip turns
 function skip() {
     if (button === 0) {
-        if (skipCount < numOfPlayers) {
+        if (skipCount < numOfPlayers - 1) {
             turn++;
+            if (turn > numOfPlayers) {
+            	turn = 1;
+            }
             skipCount++;
         }
         else {
@@ -904,16 +907,42 @@ function skip() {
             button++;
         }
     }
+    else if (button > numOfPlayers) {
+		var blackScore = black.x.length;
+        var whiteScore = white.x.length;
+        var greenScore = green.x.length;
+        var blueScore = blue.x.length;
+		document.getElementById("skipbutton").innerHTML = "Click here for score";
+        if (numOfPlayers === 2) {
+			var alertString = "Black:" + blackScore + "   White:" + whiteScore;
+        }
+        else if (numOfPlayers === 3) {
+			var alertString = "Black:" + blackScore + "   White:" + whiteScore + "   Green:" + greenScore;
+        }
+        else if (numOfPlayers === 4) {
+			var alertString = "Black:" + blackScore + "   White:" + whiteScore + "   Green:" + greenScore + "   Blue:" + blueScore;
+        }
+		alert(alertString);
+    }
     else if (button === 1) {
-	document.getElementById("skipbutton").innerHTML = "Fill in blacks territory, then click here";
-	turn = 1;
+		document.getElementById("skipbutton").innerHTML = "Fill in blacks territory, then click here";
+		turn = 1;
         button++;
     }
     else if (button === 2) {
-	score = black.x.length;
-	document.getElementById("skipbutton").innerHTML = "Click here for score";
-	var alertString = "Black:" + score + "   White:" + (boardSize * boardSize - score);
-	alert(alertString);
+		document.getElementById("skipbutton").innerHTML = "Fill in whites territory, then click here";
+		turn = 2;
+        button++;
+    }
+    else if (button === 3) {
+		document.getElementById("skipbutton").innerHTML = "Fill in greens territory, then click here";
+		turn = 3;
+        button++;
+    }
+    else if (button === 4) {
+		document.getElementById("skipbutton").innerHTML = "Fill in blues territory, then click here";
+		turn = 2;
+        button++;
     }
 	drawBoard();
 }
@@ -928,6 +957,10 @@ function undo() {
             turn = numOfPlayers;
         }
         undos ++;
+        black.findGroups();
+        white.findGroups();
+		green.findGroups();
+		blue.findGroups();
 	    drawBoard();
     }
 }
