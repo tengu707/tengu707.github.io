@@ -941,7 +941,7 @@ function skip() {
     }
     else if (button === 4) {
 		document.getElementById("skipbutton").innerHTML = "Fill in blues territory, then click here";
-		turn = 2;
+		turn = 4;
         button++;
     }
 	drawBoard();
