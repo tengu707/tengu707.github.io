@@ -1,7 +1,6 @@
 #headerlogo {
     position: absolute;
-    top: -25px;
-    left: -25px;
+    top: 0px;
+    left: 0px;
     height: 100px;
-    width: 100px;  
 }
