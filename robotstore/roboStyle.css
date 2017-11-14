@@ -4,3 +4,6 @@
     left: 0px;
     height: 100px;
 }
+#twoColumn {
+    column-count: 2;
+}
