@@ -20,3 +20,6 @@ img:first-of-type {
 body {
     background-color: #D7DBDD;
 }
+fieldset {
+    border: none;
+}
