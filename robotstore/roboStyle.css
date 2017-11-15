@@ -30,7 +30,4 @@ footer {
 .smalltext {
     font-size: 10px;
 }
-footer > p {
-    float: left;
-    background-color: #85929E;
-}
+
