@@ -52,12 +52,12 @@ footer {
           text-decoration:none;
       }
       nav ul li > a:hover {
-          background-color: #0088ff;
+          background-color: #ff8800;
           text-decoration:underline;
           color: #ffffff;
       }
       .navbar-background {
-          background-color: #ffffff;
+          background-color: #000000;
       }
       .navlink {
           height: 34px;
@@ -72,6 +72,6 @@ footer {
       }
       .navlink.active {
           color: red;
-          background-color: white;
+          background-color: #424949;
       }
       /* Navigation bar styles end */
