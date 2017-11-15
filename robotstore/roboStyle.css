@@ -1,7 +1,7 @@
 /* General formatting styles start */
 img:first-of-type {
-    top: 5px;
-    left: 5px;
+    top: 0px;
+    left: 0px;
     height: 200px;
 }
 #welcometext {
