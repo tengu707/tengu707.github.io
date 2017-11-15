@@ -6,3 +6,17 @@ img:first-of-type {
 #welcometext {
     column-count: 2;
 }
+#headername {
+    color: red;
+    textsize: 200px;
+    text-transform: uppercase;
+    text-shadow: 10px 10px black;
+}
+.searchbar {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+body {
+    background-color: #880000;
+}
