@@ -10,7 +10,7 @@ img:first-of-type {
     color: red;
     font-size: 200px;
     text-transform: uppercase;
-    text-shadow: 10px 10px black;
+    text-shadow: 4px 4px black;
 }
 .searchbox {
     position: absolute;
