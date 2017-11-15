@@ -32,4 +32,5 @@ footer {
 }
 footer > p {
     float: left;
+    background-color: #85929E;
 }
