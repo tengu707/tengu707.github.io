@@ -22,6 +22,7 @@ body {
 }
 fieldset {
     border: 0;
+    font: sans-serif;
 }
 footer {
     background-color: #85929E;
