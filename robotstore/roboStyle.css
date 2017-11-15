@@ -23,3 +23,13 @@ body {
 fieldset {
     border: 0;
 }
+footer {
+    background-color: #85929E;
+}
+.textcontent {
+    margin: auto;
+}
+.smalltext {
+    font-size: 4px;
+    float: right;
+}
