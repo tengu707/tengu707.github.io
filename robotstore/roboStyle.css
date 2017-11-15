@@ -30,6 +30,6 @@ footer {
 .smalltext {
     font-size: 10px;
 }
-footer:child {
+footer > p {
     float: left;
 }
