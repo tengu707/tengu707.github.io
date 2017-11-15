@@ -34,44 +34,45 @@ footer {
 /* General formatting styles end */
 /* Navigation bar styles start */
       
-      nav {
-          height: 45px;
-          width: 100%;
-          margin-bottom: 5px;
-          margin-top: 20px;
-          padding-left: 5px;
-      }
-      nav ul {
-          list-style: none;
-          padding: 0px;
-      }
-      nav ul li {
-          display: block;
-      }
-      nav ul li > a {
-          text-decoration:none;
-      }
-      nav ul li > a:hover {
-          background-color: #ff8800;
-          text-decoration:underline;
-          color: #ffffff;
-      }
-      .navbar-background {
-          background-color: #000000;
-      }
-      .navlink {
-          height: 34px;
-          margin-right: 10px;
-          font-size: 18px;
-          float: left;
-          padding-left:5px;
-          padding-right:5px;
-          padding-top: 12px;
-          color: black;
-          text-decoration: none;
-      }
-      .navlink.active {
-          color: red;
-          background-color: #424949;
-      }
-      /* Navigation bar styles end */
+nav {
+      height: 45px;
+      width: 100%;
+      margin-bottom: 5px;
+      margin-top: 20px;
+      padding-left: 5px;
+}
+nav ul {
+      list-style: none;
+      padding: 0px;
+}
+nav ul li {
+      display: block;
+}
+nav ul li > a {
+      text-decoration:none;
+}
+nav ul li > a:hover {
+      background-color: #ff0000;
+      text-decoration:underline;
+      color: #ffffff;
+}
+.navbar-background, backgroundgradient {
+      background-color: #000000;
+}
+
+.navlink {
+      height: 34px;
+      margin-right: 10px;
+      font-size: 18px;
+      float: left;
+      padding-left:5px;
+      padding-right:5px;
+      padding-top: 12px;
+      color: white;
+      text-decoration: none;
+}
+.navlink.active {
+    color: red;
+    background-color: #424949;
+}
+/* Navigation bar styles end */
