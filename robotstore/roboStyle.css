@@ -8,7 +8,7 @@ img:first-of-type {
 }
 #headername {
     color: red;
-    textsize: 200px;
+    font-size: 200px;
     text-transform: uppercase;
     text-shadow: 10px 10px black;
 }
@@ -18,5 +18,5 @@ img:first-of-type {
     right: 0px;
 }
 body {
-    background-color: #880000;
+    background-color: #ff8888;
 }
