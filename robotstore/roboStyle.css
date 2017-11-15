@@ -12,7 +12,7 @@ img:first-of-type {
     text-transform: uppercase;
     text-shadow: 10px 10px black;
 }
-.searchbar {
+.searchbox {
     position: absolute;
     top: 0px;
     right: 0px;
