@@ -26,11 +26,6 @@ fieldset {
 }
 footer {
     background-color: #85929E;
+    float: left;
 }
-.textcontent {
-    margin: auto;
-}
-.smalltext {
-    font-size: 4px;
-    float: right;
-}
+
