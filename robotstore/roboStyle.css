@@ -29,6 +29,7 @@ fieldset {
 }
 footer {
     background-color: #85929E;
+    color: red;
 }
 .smalltext {
     font-size: 10px;
