@@ -144,17 +144,17 @@
     });
   }
   //search filter function
+  var search = document.getElementById("searchbox");
   $('#searchbox').change(function() {
-    let search = document.getElementById("searchbox");
-    if (search.match(/[dog|R.E.T|ret|E.T.|ET|pet]/i)) {
+    if (search.match(/[dog|R.E.T|ret|E.T.|ET|pet]/i) ) {
       $('#robo2').addClass('invisible');
       $('#robo3').addClass('invisible');
     }
-    else if (search.match(/[butler|martini|chore|housework]/i)) {
+    else if (search.match(/[butler|martini|chore|housework]/i) ) {
       $('#robo1').addClass('invisible');
       $('#robo3').addClass('invisible');
     }
-    else if (search.match(/[mega|man|freind|companion]/i)) {
+    else if (search.match(/[mega|man|freind|companion]/i) ) {
       $('#robo1').addClass('invisible');
       $('#robo2').addClass('invisible');
     }
