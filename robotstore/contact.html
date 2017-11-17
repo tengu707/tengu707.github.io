@@ -47,7 +47,7 @@
     </select>
 </p>
 <p><label for="quest">Your Question</label><br>
-  <textarea name="quest" id="" cols="50" rows="10" maxlength="500"></textarea></p>
+  <textarea name="quest" id="question" cols="50" rows="10" maxlength="500"></textarea></p>
 </div>
 
 </fieldset>
@@ -62,19 +62,21 @@
 </footer>
     <script>
       //script to highlight clicked on areas
+      $('#contactForm').click(function() {
+        $('input').off();
+        $('select').off();
+        $('textarea').off();
+      });
       $('#fullname').click(function() {
-        $("input").off();
-        $("select").off();
         $(this).addClass('Highlight');
       });
       $('#email').click(function() {
-        $("input").off();
-        $("select").off();
         $(this).addClass('Highlight');
       });
       $('#yloc').click(function() {
-        $("input").off();
-        $("select").off();
+        $(this).addClass('Highlight');
+      });
+      $('#question').click(function() {
         $(this).addClass('Highlight');
       });
     </script>
