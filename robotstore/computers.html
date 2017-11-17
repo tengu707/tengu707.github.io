@@ -84,7 +84,7 @@
           alert(results);
         });
       }
-  //function for highlighting hovered areas
+  //function for highlighting hovered areas, clicked areas are given a border
   var highlightAreas = [
     '#pi3',
     '#pi4',
@@ -96,13 +96,30 @@
     '#pss'
   ]
   for (let i = 0; i < highlightAreas.length; i++) {
-    $(highlightAreas[i]).hover(function() {
+    $(highlightAreas[i]).mouseenter(function() {
       for (let j = 0; j < highlightAreas.length; j++) {
         if (i === j) {
           $(highlightAreas[j]).addClass('shadow');
         }
         else {
           $(highlightAreas[j]).removeClass('shadow');
+        }
+      }
+    });
+  }
+  for (let i = 0; i < highlightAreas.length; i++) {
+    $(highlightAreas[i]).mouseleave(function() {
+      $(this).removeClass('shadow');
+    });
+  }
+  for (let i = 0; i < highlightAreas.length; i++) {
+    $(highlightAreas[i]).click(function() {
+      for (let j = 0; j < highlightAreas.length; j++) {
+        if (i === j) {
+          $(highlightAreas[j]).addClass('border');
+        }
+        else {
+          $(highlightAreas[j]).removeClass('border');
         }
       }
     });
