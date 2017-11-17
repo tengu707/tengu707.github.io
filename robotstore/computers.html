@@ -30,21 +30,21 @@
     <form>
       <fieldset>
         <legend>Select a CPU</legend>
-        <p><label for="i3"><input type="radio" name="CPU" id="i3">Intel i3</label></p>
-        <p><label for="i4"><input type="radio" name="CPU" id="i4"></label>Intel i4</p>
-        <p><label for="i7"><input type="radio" name="CPU" id="i7"></label>Intel i7</p>
+        <p id='pi3'><label for="i3"><input type="radio" name="CPU" id="i3">Intel i3</label></p>
+        <p id='pi4'><label for="i4"><input type="radio" name="CPU" id="i4"></label>Intel i4</p>
+        <p id='pi7'><label for="i7"><input type="radio" name="CPU" id="i7"></label>Intel i7</p>
       </fieldset>
   <fieldset>
     <legend>Select Ram</legend>
-    <p><label for="8"><input type="radio" name="ram" id="8">8gig</label></p>
-    <p><label for="16"><input type="radio" name="ram" id="16">16gig</label></p>
+    <p id='p8'><label for="8"><input type="radio" name="ram" id="8">8gig</label></p>
+    <p id='p16'><label for="16"><input type="radio" name="ram" id="16">16gig</label></p>
   </fieldset>
     <fieldset>
       <legend></legend>
 
-      <p><label for="vrh"><input type="checkbox" name="" id="vrh">Virtual Reality Helmet</label></p>
-      <p><label for="3ds"><input type="checkbox" name="" id="3ds">3D Screen</label></p>
-      <p><label for="ss"><input type="checkbox" name="" id="ss">Stereo Speakers</label></p>
+      <p id='pvrh'><label for="vrh"><input type="checkbox" name="" id="vrh">Virtual Reality Helmet</label></p>
+      <p id='p3ds'><label for="3ds"><input type="checkbox" name="" id="3ds">3D Screen</label></p>
+      <p id='pss'><label for="ss"><input type="checkbox" name="" id="ss">Stereo Speakers</label></p>
     </fieldset>
   <p>
     <button>Submit</button>
@@ -86,14 +86,14 @@
       }
   //function for highlighting hovered areas
   var highlightAreas = [
-    '#i3',
-    '#i4',
-    '#i7',
-    '#8',
-    '#16',
-    '#vrh',
-    '#3ds',
-    '#ss'
+    '#pi3',
+    '#pi4',
+    '#pi7',
+    '#p8',
+    '#p16',
+    '#pvrh',
+    '#p3ds',
+    '#pss'
   ]
   for (let i = 0; i < highlightAreas.length; i++) {
     $(highlightAreas[i]).hover(function() {
