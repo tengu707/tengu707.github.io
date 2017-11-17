@@ -60,6 +60,23 @@
   <p class="textcontent">All site contents is copyright <a class="mainlink" href="http://www.mrrobot.com">Mr Robot!</a></p>
   <p class="smalltext">This page was generated on <time>09:25:04.123</time>.</p>
 </footer>
-
+    <script>
+      //script to highlight clicked on areas
+      $('#fullname').click(function() {
+        $("input").off();
+        $("select").off();
+        $(this).addClass('Highlight');
+      });
+      $('#email').click(function() {
+        $("input").off();
+        $("select").off();
+        $(this).addClass('Highlight');
+      });
+      $('#yloc').click(function() {
+        $("input").off();
+        $("select").off();
+        $(this).addClass('Highlight');
+      });
+    </script>
   </body>
 </html>
