@@ -13,7 +13,7 @@
               <img src="image/logo.jpg" />
           </a>
           <span id="headername">Mr. Robot</span>
-          <input type="search" class="searchbox" placeholder="Search our store" />
+          <input type="search" class="searchbox" placeholder="Search our store" id="searchbox" />
       </div>
 
       <nav class="backgroundgradient">
@@ -143,6 +143,27 @@
       }
     });
   }
+  //search filter function
+  $('.searchbox').keypress(function() {
+    let search = document.getElementById("searchbox");
+    if (search.match(/[dog|E.T.|ET|pet]/i)) {
+      $('#robo2').addClass('invisible');
+      $('#robo3').addClass('invisible');
+    }
+    else if (search.match(/[butler|martini|chore|housework]/i)) {
+      $('#robo1').addClass('invisible');
+      $('#robo3').addClass('invisible');
+    }
+    else if (search.match(/[mega|man|freind|companion]/i)) {
+      $('#robo1').addClass('invisible');
+      $('#robo2').addClass('invisible');
+    }
+    else {
+      for (let i = 0; i < highlightAreas.length; i++) {
+        $(highlightAreas[i]).removeClass('invisible');
+      }
+    $(
+  });
 </script>
 </body>
 </html>
