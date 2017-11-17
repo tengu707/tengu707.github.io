@@ -42,6 +42,8 @@ footer {
 .smalltext {
     font-size: 10px;
 }
+/* General formatting styles end */
+/* formatting for jquery functions start */
 .Highlight {
     background-color: #FF4D4D;
 }
@@ -56,9 +58,35 @@ footer {
 .invisible {
     visibility: hidden;
 }
-/* General formatting styles end */
-/* Navigation bar styles start */
-      
+/* formatting for jquery functions end */
+/* formatting for loading function start */
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #000000;
+  border-radius: 50%;
+  border-top: 16px solid #ff0000;
+  border-bottom: 16px solid #ff0000;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* formatting for loading function end */
+/* Navigation bar styles start */    
 nav {
       height: 45px;
       width: 100%;
