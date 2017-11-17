@@ -48,6 +48,11 @@ footer {
 .shadow {
     background-color: #BDC3C7;
 }
+.border {
+    border-style: solid;
+    border-width: 10px;
+    border-color: red;
+}
 /* General formatting styles end */
 /* Navigation bar styles start */
       
