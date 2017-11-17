@@ -40,6 +40,9 @@ o<!DOCTYPE html>
     <label for="email">   Email:</label><input type="email" name="email" id="email">
 </p>
 <p>
+    <label for="city">    City:</label><input type="city" name="city" id="city">
+</p>
+<p>
     <label for="yloc">   Loaction:</label>
     <select name="" id="yloc">
       <option value="0">Moon</option>
@@ -67,6 +70,7 @@ o<!DOCTYPE html>
         '#email',
         '#yloc',
         '#question'
+        '#city'
       ]
       for (let i = 0; i < highlightAreas.length; i++) {
         $(highlightAreas[i]).click(function() {
