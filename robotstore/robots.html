@@ -6,7 +6,10 @@
   <link rel="stylesheet" type="text/css" href="https://tengu707.github.io/robotstore/roboStyle.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
 </head>
-<body>
+<body onload="loaded()">
+  <div id="loader"></div>
+  
+  <div style="display:none;" id="page">
   <header>
       <div>
           <a class="headerlogo" href="https://tengu707.github.io/robotstore/index.html">
@@ -75,7 +78,9 @@
   <p class="textcontent">All site contents is copyright <a class="mainlink" href="http://www.mrrobot.com">Mr Robot!</a></p>
   <p class="smalltext">This page was generated on <time>09:25:04.123</time>.</p>
 </footer>
-
+ </div>
+  <script src="https://tengu707.github.io/robotstore/loader.js"></script>
+  
 <template id="producttemplate">
 <article>
   <label id="lblName" for="productimage">Name:</label>
