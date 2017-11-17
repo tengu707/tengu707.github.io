@@ -108,6 +108,24 @@
     let addressTemplate = document.querySelector('#address');
     let addressClone = document.importNode(addressTemplate.content, true);
   document.body.appendChild(addressClone);
+  //function for highlighting hovered areas
+  var highlightAreas = [
+        '#robo1',
+        '#robo2',
+        '#robo3'
+      ]
+      for (let i = 0; i < highlightAreas.length; i++) {
+        $(highlightAreas[i]).hover(function() {
+          for (let j = 0; j < highlightAreas.length; j++) {
+            if (i === j) {
+              $(highlightAreas[j]).addClass('shadow');
+            }
+            else {
+              $(highlightAreas[j]).removeClass('shadow');
+            }
+          }
+        });
+      }
 </script>
 </body>
 </html>
