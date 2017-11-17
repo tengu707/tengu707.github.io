@@ -32,7 +32,7 @@
 
 <ul>
 <li >
-  <article id="robo1" class="invisible">
+  <article id="robo1">
   <h4>
   <label for="imgrobo1">  Name:</label>
      R.E.T.</h4>
@@ -144,8 +144,7 @@
     });
   }
   //search filter function
-  /*
-  $('.searchbox').keypress(function() {
+  $('#searchbox').change(function() {
     let search = document.getElementById("searchbox");
     if (search.match(/[dog|R.E.T|ret|E.T.|ET|pet]/i)) {
       $('#robo2').addClass('invisible');
@@ -165,7 +164,6 @@
       }
     }
   });
-  */
 </script>
 </body>
 </html>
