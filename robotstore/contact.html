@@ -62,6 +62,25 @@ o<!DOCTYPE html>
 </footer>
     <script>
       //script to highlight clicked on areas
+      var highlightAreas = [
+        '#fullname',
+        '#email',
+        '#yloc',
+        '#question'
+      ]
+      for (let i = 0; i < highlightAreas.length; i++) {
+        $(highlightAreas[i]).click(function() {
+          for (let j = 0; j < highlightAreas.length; j++) {
+            if (i === j) {
+              $(highlightAreas[j]).addClass('Highlight');
+            }
+            else {
+              $(highlightAreas[j]).removeClass('Highlight');
+            }
+          }
+        });
+      }
+      /*
       $('#fullname').click(function() {
         $(this).addClass('Highlight');
         $('#email').removeClass('Highlight');
@@ -86,6 +105,7 @@ o<!DOCTYPE html>
         $('#email').removeClass('Highlight');
         $('#yloc').removeClass('Highlight');
       });
+      */
     </script>
   </body>
 </html>
