@@ -145,7 +145,7 @@
   }
   //search filter function
   $('#searchbox').change(function() {
-    let search = document.getElementById("searchbox");
+    let search = document.getElementById("searchbox").innerHTML;
     if (search.match(/[dog|R.E.T|ret|E.T.|ET|pet]/i) ) {
       $('#robo2').addClass('invisible');
       $('#robo3').addClass('invisible');
@@ -165,7 +165,7 @@
     }
   });
   $('#searchbox').change(function() {
-    let search = document.getElementById("searchbox");
+    let search = document.getElementById("searchbox").value;
     alert(document.getElementById("searchbox") );
   });
 </script>
