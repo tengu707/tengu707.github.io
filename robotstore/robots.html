@@ -146,13 +146,13 @@
   //search filter function
   $('#searchbox').change(function() {
     let search = document.getElementById("searchbox").value;
-    if (search.match(/dog|R.E.T|ret|E.T.|ET|pet/gi) ) {
+    if (search.match(/dog|R.E.T|ret|E.T.|ET|pet/i) ) {
       $('#robo1').removeClass('invisible');
       $('#robo2').addClass('invisible');
       $('#robo3').addClass('invisible');
       
     }
-    else if (search.match(/butler|martini|chore|housework/gi) ) {
+    else if (search.match(/butler|martini|chore|housework/i) ) {
       $('#robo2').removeClass('invisible');
       $('#robo1').addClass('invisible');
       $('#robo3').addClass('invisible');
