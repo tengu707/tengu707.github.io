@@ -60,14 +60,6 @@ footer {
 }
 /* formatting for jquery functions end */
 /* formatting for loading function start */
-#loadmessage {
-    position: absolute;
-    left: 15%;
-    top: 15%;
-    width: 106px;
-    height: 106px;
-    
-}
 #loader {
   position: absolute;
   left: 50%;
