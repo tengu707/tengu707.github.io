@@ -86,3 +86,7 @@ footer {
   100% { transform: rotate(360deg); }
 }
 /* formatting for loading function end */
+/* formatting for navbar start */
+#gif {
+    height: 100px;
+}
