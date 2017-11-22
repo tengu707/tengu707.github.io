@@ -60,15 +60,23 @@
   <fieldset>
     <div>
     <legend>Enter your Contact info below:</legend>
-     <p>
-    <label for="fullname">Full Name:</label><input type="text" name="fullname" id="fullname">
-     </p>
+<div class="row">
+<div class="col-sm-6 col-md-3">
+<p>
+<label for="fullname">Full Name:</label><input type="text" name="fullname" id="fullname">
+</p>
+</div>
+<div class="col-sm-6 col-md-3">      
 <p>
     <label for="email">   Email:</label><input type="email" name="email" id="email">
 </p>
+</div>
+<div class="col-sm-6 col-md-3">
 <p>
     <label for="city">    City:</label><input type="city" name="city" id="city">
 </p>
+</div>
+<div class="col-sm-6 col-md-3">
 <p>
     <label for="yloc">   Loaction:</label>
     <select name="" id="yloc">
@@ -76,8 +84,11 @@
       <option value="1">Earth</option>
     </select>
 </p>
+</div>
+<div class="row">
 <p><label for="quest">Your Question</label><br>
-  <textarea name="quest" id="question" cols="50" rows="10" maxlength="500"></textarea></p>
+  <textarea name="quest" id="question" cols="100" rows="10" maxlength="1000"></textarea></p>
+</div>
 </div>
 
 </fieldset>
