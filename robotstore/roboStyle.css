@@ -4,9 +4,6 @@ img:first-of-type {
     left: 0px;
     height: 200px;
 }
-#welcometext {
-    column-count: 2;
-}
 #headername {
     color: red;
     font-size: 200px;
