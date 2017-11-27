@@ -12,11 +12,44 @@
   </head>
   <body>
     <header>
-      /*create navbar*/
+      <!--create navbar -->
       <nav class="navbar navbar-default">
           <div class="container-fluid">
+            <!-- Logo -->
             <div class="navbar-header">
               <a class="navbar-brand" href="home.html">Car Brand</a>
+            </div>
+            <div class="collapse navbar-collapse" id="collapsed-navbar">
+              <ul class="nav navbar-nav">
+                
+                <!-- home -->
+                <li class="active"><a href="home.html">Home <span class="sr-only">(current)</span></a></li>
+                
+                <!-- cars dropdown -->
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Car1</a></li>
+                    <li><a href="#">Car2</a></li>
+                    <li><a href="#">Car3</a></li>
+                    <li><a href="#">Car4</a></li>
+                    <li><a href="#">Car5</a></li>
+                  </ul>
+                </li>
+                
+                <!-- about -->
+                <li><a href="#">About Car Brand </a></li>
+                
+                <!-- contact -->
+                <li><a href="#">Contact Us </a></li>
+                
+              </ul>
+              <form class="navbar-form navbar-left">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form>
             </div>
           </div>
         </nav>
