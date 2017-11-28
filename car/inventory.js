@@ -35,6 +35,8 @@ var inventoryFill = function() {
 var carouselFill = function() {
   var indicatorString = "";
   var wrapperString = "";
+  alert(indicatorString);
+  alert(wrapperString);
   for(i in carIndex) {
     if(i === 0) {
       indicatorString = indicatorString + '<li data-target="#carousel-car" data-slide-to="' + i.toString() + '" class="active"></li>';
