@@ -17,8 +17,11 @@ h1 h2 h3 h4 h5 h6 {
   background-color: #7FE8FF;
   height: 340px;
 }
-body {
+article {
   margin: 10px;
+}
+.row {
+  margin: 20px;
 }
 .red {
   color: red;
