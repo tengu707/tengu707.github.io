@@ -14,4 +14,6 @@ var swift = new Car("swift", "Swift", "swift.png", "This is car 3");
 var sx4 = new Car("sx4", "SX4", "sx4.png", "This is car 4");
 var r1000 = new Car("r1000", "GSX R1000", "r1000.png", "This is car 5");
 
-alert(swift.picture);
+for(var i = 0; i < carIndex.length; i++) {
+  
+}
