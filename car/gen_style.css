@@ -34,3 +34,12 @@ article {
   width: 600px;
   margin: auto;
 }
+.crop {
+    height: 400px;
+    width: 600px;
+    overflow: hidden;
+}
+.crop img {
+    height: auto;
+    width: 100%;
+}
