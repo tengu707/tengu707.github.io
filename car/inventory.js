@@ -49,5 +49,8 @@ var carouselFill = function() {
   document.getElementById("wrapper").innerHTML = wrapperString;
 }
 
+alert(indicatorString);
+alert(wrapperString);
+
 inventoryFill();
 carouselFill();
