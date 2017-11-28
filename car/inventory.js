@@ -31,4 +31,17 @@ var inventoryFill = function() {
   document.getElementById("inventory").innerHTML = inventoryString;
 }
 
+//Carousel Filling gunction
+var carouselFill = function() {
+  var indicatorString = "";
+  var wrapperString = "";
+  for(i in carIndex) {
+    indicatorString = indicatorString + '<li data-target="#carousel-car" data-slide-to="' + i + '"></li>';
+    wrapperString = wrapperString + '<div class="item"><img src="' + carIndex[i].picture +'" alt="Picture Error"><div class="carousel-caption"><h4>' + carIndex[i].name + '</h4></div></div>'
+  }
+  document.getElementById("indicator").innerHTML = indicatorString;
+  document.getElementById("wrapper").innerHTML = wrapperString;
+}
+
 inventoryFill();
+carouselFill();
