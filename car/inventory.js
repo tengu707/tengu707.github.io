@@ -16,6 +16,7 @@ var r1000 = new Car("r1000", "GSX R1000", "r1000.png", "This is car 5");
 
 //create string to fill inventory
 var inventoryString = "";
+alert("start");
 alert(Car[1].name);
 for(var i in Car) {
   let obj = Car[i];
