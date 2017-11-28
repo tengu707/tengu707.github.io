@@ -29,3 +29,8 @@ article {
 .center {
   text-align: center;
 }
+#carousel-car {
+  height: 200px;
+  width: 300px;
+  margin: auto;
+}
