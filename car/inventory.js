@@ -19,6 +19,7 @@ var inventoryString = "";
 alert("start");
 for(i in carIndex) {
   alert(carIndex[i]);
+  alert(carIndex[i].id);
   inventoryString = inventoryString + '<article id=" ' + carIndex[i].id + ' "><div class="col-sm-6 col-md-4"><div class="thumbnail"><img id="img' + carIndex[i].id + ' " src=" ' + carIndex[i].picture + ' " width=200 height=200 alt="Picture Error"><div class="caption"><h3><strong>Name:</strong> ' + carIndex[i].name + ' </h3><p><strong>Description:</strong> ' + carIndex[i].description + ' </p></div></div></div></article>';
 }
 alert(inventoryString);
