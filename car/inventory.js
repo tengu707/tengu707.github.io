@@ -38,11 +38,11 @@ var carouselFill = function() {
   for(i in carIndex) {
     if(i === 0) {
       indicatorString = indicatorString + '<li data-target="#carousel-car" data-slide-to="' + i.toString() + '" class="active"></li>';
-      wrapperString = wrapperString + '<div class="item active"><img src="' + carIndex[i].picture +'" alt="Picture Error"><div class="carousel-caption"><h4>' + carIndex[i].name + '</h4></div></div>'
+      wrapperString = wrapperString + '<div class="item active"><img src="' + carIndex[i].picture +'" alt="Picture Error"><div class="carousel-caption"><h4>' + carIndex[i].name + '</h4></div></div>';
     }
     else {
       indicatorString = indicatorString + '<li data-target="#carousel-car" data-slide-to="' + i.toString() + '"></li>';
-      wrapperString = wrapperString + '<div class="item"><img src="' + carIndex[i].picture +'" alt="Picture Error"><div class="carousel-caption"><h4>' + carIndex[i].name + '</h4></div></div>'
+      wrapperString = wrapperString + '<div class="item"><img src="' + carIndex[i].picture +'" alt="Picture Error"><div class="carousel-caption"><h4>' + carIndex[i].name + '</h4></div></div>';
     }
   }
   document.getElementById("indicator").innerHTML = indicatorString;
