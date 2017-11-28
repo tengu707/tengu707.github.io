@@ -5,7 +5,7 @@ var Car = function(ID, Name, Picture, Description) {
   this.name = Name;
   this.picture = "image/" + Picture;
   this.description = Description;
-  carIndex.push(this.id);
+  carIndex.push(this);
 }
 
 var sierra = new Car("sierra", "Sierra", "sierra.png", "This is car 1");
