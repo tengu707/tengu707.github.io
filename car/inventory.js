@@ -31,28 +31,4 @@ var inventoryFill = function() {
   document.getElementById("inventory").innerHTML = inventoryString;
 }
 
-//Carousel Filling gunction
-var carouselFill = function() {
-  var indicatorString = "";
-  var wrapperString = "";
-  alert(indicatorString);
-  alert(wrapperString);
-  for(i in carIndex) {
-    if(i === 0) {
-      indicatorString = indicatorString + '<li data-target="#carousel-car" data-slide-to="' + i.toString() + '" class="active"></li>';
-      wrapperString = wrapperString + '<div class="item active"><img src="' + carIndex[i].picture +'" alt="Picture Error"><div class="carousel-caption"><h4>' + carIndex[i].name + '</h4></div></div>';
-    }
-    else {
-      indicatorString = indicatorString + '<li data-target="#carousel-car" data-slide-to="' + i.toString() + '"></li>';
-      wrapperString = wrapperString + '<div class="item"><img src="' + carIndex[i].picture +'" alt="Picture Error"><div class="carousel-caption"><h4>' + carIndex[i].name + '</h4></div></div>';
-    }
-  }
-  document.getElementById("indicator").innerHTML = indicatorString;
-  document.getElementById("wrapper").innerHTML = wrapperString;
-}
-
-alert(indicatorString);
-alert(wrapperString);
-
 inventoryFill();
-carouselFill();
