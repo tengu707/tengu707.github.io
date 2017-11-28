@@ -17,9 +17,8 @@ var r1000 = new Car("r1000", "GSX R1000", "r1000.png", "This is car 5");
 //create string to fill inventory
 var inventoryString = "";
 alert("start");
-alert(Car[1].name);
-for(var i in Car) {
-  let obj = Car[i];
+for(i in carIndex) {
+  let obj = carIndex[i];
   alert(obj);
   inventoryString = inventoryString + '<article id=" ' + obj.id + ' "><div class="col-sm-6 col-md-4"><div class="thumbnail"><img id="img' + obj.id + ' " src=" ' + obj.picture + ' " width=200 height=200 alt="Picture Error"><div class="caption"><h3><strong>Name:</strong> ' + obj.name + ' </h3><p><strong>Description:</strong> ' + obj.description + ' </p></div></div></div></article>';
 }
