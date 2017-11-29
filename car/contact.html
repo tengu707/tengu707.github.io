@@ -73,7 +73,40 @@
       </header>
     
     <h1>Contact Us</h1>
-    
+    <form id="contactForm">
+  <fieldset>
+    <legend>Enter your Contact info below:</legend>
+<div class="row">
+<div class="col-sm-6 col-md-3">
+<p>
+<label for="fullname">Full Name:</label><input type="text" name="fullname" id="fullname">
+</p>
+</div>
+<div class="col-sm-6 col-md-3">      
+<p>
+    <label for="email">   Email:</label><input type="email" name="email" id="email">
+</p>
+</div>
+<div class="col-sm-6 col-md-3">
+<p>
+    <label for="phone">    Phone:</label><input type="tel" name="phone" id="phone">
+</p>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <p><label for="quest">Tell Us About Your Dream Car</label><br>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <textarea name="quest" id="question" cols="50" rows="10" maxlength="500"></textarea></p>
+  </div>
+</div>
+</fieldset>
+  <p>
+  <button id="btnSendInfo" class="submitbutton">Send Info</button>
+  </p>
+</form>
     
   </body>
 </html>
