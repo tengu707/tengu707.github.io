@@ -30,12 +30,12 @@ article {
   text-align: center;
 }
 #carousel-car {
-  height: 200px;
+  height: 250px;
   width: 400px;
   margin: auto;
 }
 .crop {
-    height: 200px;
+    height: 250px;
     width: 400px;
     overflow: hidden;
 }
