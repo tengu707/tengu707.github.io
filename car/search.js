@@ -1,5 +1,5 @@
 //search filter function
-  $('#searchbox').change(function() {
+function search() {
     // Declare variables
     var input, filter, ul, li, h3, i;
     input = document.getElementById('searchbox');
@@ -16,4 +16,4 @@
             li[i].style.display = "none";
         }
     }
-  });
+}
