@@ -1,4 +1,0 @@
-db.employees.updateOne({name: "Alison Davidson"}, { $set : { "address": "777 E. 1st St. # 120", "city": "Tempe", "state": "Arizona", "position.remote": false}}, { upsert : true})
-db.employees.updateOne({name: "Mary Crawley"}, { $set : { "address": "8322 W. Vista Pl.", "city": "Scottsdale", "state": "Arizona", "position.remote": false}}, { upsert : true})
-db.employees.updateMany({}, { $unset: {"state": "Arizona", "position.remote": "false"}}, { upsert : false})
-db.employees.createIndex( { position: 1 } )
